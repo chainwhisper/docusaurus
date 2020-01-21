@@ -1,6 +1,6 @@
 ---
 id: doc2
-title: Creating a Wallet on Binance Chain
+title: Creating a Wallet on Binance Chain Web Wallet
 ---
 
 To start, navigate to the Binance Chain [homepage](https://www.binance.org/en) (or [testnet](https://testnet.binance.org/en/) if you wish to test using testnet funds) and click on “Create Wallet” in the upper left-hand corner of your screen.
@@ -27,14 +27,14 @@ In order to create a keystore file, you will need to assign a password that will
 
 Once you have entered your password, click “Download Keystore File”.
 
-![](../website/static/img/new1.png)
+![new1](assets/new1.png)
 
 
 In the next step, your mnemonic phrase will be generated. Make sure no one is able to see your screen during this phase.
 
 Once you’ve proceeded to the next step, you will see your mnemonic phrase and you will be able to view your private key by clicking on “View my Private Key >>” after you have finished writing down your mnemonic phrase.
 
-![](../website/static/img/new2.png)
+![new2](assets/new2.png)
 
 The recommended methods of accessing your wallet are with a keystore file or a supported hardware device.
 
@@ -49,7 +49,7 @@ Store them in a fireproof and waterproof safe/lockbox.
 
 Congratulations. You’ve created a wallet on the Binance Chain. You may now use the wallet with the Binance DEX.
 
-![](../website/static/img/new3.png)
+![new3](assets/new3.png)
 
 
 To keep your fund safe, please read this guide [here](https://community.binance.org/topic/289/best-practice-to-safely-use-binance-dex).

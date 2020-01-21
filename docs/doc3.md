@@ -1,14 +1,75 @@
 ---
 id: doc3
-title: This is document number 3
+title: Transfer Tokens
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac euismod odio, eu consequat dui. Nullam molestie consectetur risus id imperdiet. Proin sodales ornare turpis, non mollis massa ultricies id. Nam at nibh scelerisque, feugiat ante non, dapibus tortor. Vivamus volutpat diam quis tellus elementum bibendum. Praesent semper gravida velit quis aliquam. Etiam in cursus neque. Nam lectus ligula, malesuada et mauris a, bibendum faucibus mi. Phasellus ut interdum felis. Phasellus in odio pulvinar, porttitor urna eget, fringilla lectus. Aliquam sollicitudin est eros. Mauris consectetur quam vitae mauris interdum hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Binance Chain is essentially a digital asset creation and exchange platform.
+The features listed below are currently supported on Binance Chain:
 
-Duis et egestas libero, imperdiet faucibus ipsum. Sed posuere eget urna vel feugiat. Vivamus a arcu sagittis, fermentum urna dapibus, congue lectus. Fusce vulputate porttitor nisl, ac cursus elit volutpat vitae. Nullam vitae ipsum egestas, convallis quam non, porta nibh. Morbi gravida erat nec neque bibendum, eu pellentesque velit posuere. Fusce aliquam erat eu massa eleifend tristique.
+* The Issuance, Burning, Minting and Freezing of Tokens
+* Transfer of Tokens
+* The Listing and Delisting of Tokens
 
-Sed consequat sollicitudin ipsum eget tempus. Integer a aliquet velit. In justo nibh, pellentesque non suscipit eget, gravida vel lacus. Donec odio ante, malesuada in massa quis, pharetra tristique ligula. Donec eros est, tristique eget finibus quis, semper non nisl. Vivamus et elit nec enim ornare placerat. Sed posuere odio a elit cursus sagittis.
+Transfer is the most basic transaction Binance Chain supports, it moves assets among different addresses.
 
-Phasellus feugiat purus eu tortor ultrices finibus. Ut libero nibh, lobortis et libero nec, dapibus posuere eros. Sed sagittis euismod justo at consectetur. Nulla finibus libero placerat, cursus sapien at, eleifend ligula. Vivamus elit nisl, hendrerit ac nibh eu, ultrices tempus dui. Nam tellus neque, commodo non rhoncus eu, gravida in risus. Nullam id iaculis tortor.
+Please note the fees must be paid first in`BNB` before the transaction can be executed.
 
-Nullam at odio in sem varius tempor sit amet vel lorem. Etiam eu hendrerit nisl. Fusce nibh mauris, vulputate sit amet ex vitae, congue rhoncus nisl. Sed eget tellus purus. Nullam tempus commodo erat ut tristique. Cras accumsan massa sit amet justo consequat eleifend. Integer scelerisque vitae tellus id consectetur.
+
+
+## Create an Account
+
+The first thing you’ll need to do anything on the Binance Chain is an account. Each account has a public key and a private key. It is created by a user of the blockchain. It also includes account number and sequence number for replay protection. Whenever a new address receives an asset, the corresponding transaction would create an Account for that address, which contains balances across all assets that are owned on this address.
+
+The balance (the amount of tokens) of each asset is composed of 3 different parts:
+
+* Available: the amount of tokens that can be transferred, and spent to swap (buy) other assets
+* Locked: the amount of tokens that has been used in any outstanding orders. Once the order terminates (either filled, canceled or expired), the locked amount will decrease.
+* Frozen: the amount of tokens that has been frozen via Freeze transactions.
+
+Because the private key must be kept secret, you can generate the private key with the following command:
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--JavaScript-->
+
+```js
+// generate key entropy
+const privateKey = crypto.generatePrivateKey()
+// get an address
+const address = crypto.getAddressFromPrivateKey(privateKey)
+
+const BnbApiClient = require('@binance-chain/javascript-sdk');
+const axios = require('axios');
+const bnbClient = new BnbApiClient(api);
+const httpClient = axios.create({ baseURL: api });
+bnbClient.chooseNetwork("testnet"); // or this can be "mainnet"
+bnbClient.setPrivateKey(privKey);
+bnbClient.initChain();
+
+const address = bnbClient.getClientKeyAddress();
+
+console.log('address: ',address)
+```
+<!--Golang-->
+
+```golang
+//-----   Init KeyManager  -------------
+km, _ := NewKeyManager()
+//-----   Init sdk  -------------
+client, err := sdk.NewDexClient("testnet-dex.binance.org", types.TestNetwork, keyManager)
+accn,_:=client.GetAccount(client.GetKeyManager().GetAddr().String())
+//-----   Print Address
+fmt.Println(accn)
+```
+
+<!--python-->
+
+```py
+from binance_chain.wallet import Wallet
+from binance_chain.environment import BinanceEnvironment
+
+testnet_env = BinanceEnvironment.get_testnet_env(, env=testnet_env)
+wallet = Wallet.create_random_wallet(env=env)
+print(wallet.address)
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
