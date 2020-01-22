@@ -18,13 +18,7 @@ Please note the fees must be paid first in`BNB` before the transaction can be ex
 
 ## Create an Account
 
-The first thing you’ll need to do anything on the Binance Chain is an account. Each account has a public key and a private key. It is created by a user of the blockchain. It also includes account number and sequence number for replay protection. Whenever a new address receives an asset, the corresponding transaction would create an Account for that address, which contains balances across all assets that are owned on this address.
-
-The balance (the amount of tokens) of each asset is composed of 3 different parts:
-
-* Available: the amount of tokens that can be transferred, and spent to swap (buy) other assets
-* Locked: the amount of tokens that has been used in any outstanding orders. Once the order terminates (either filled, canceled or expired), the locked amount will decrease.
-* Frozen: the amount of tokens that has been frozen via Freeze transactions.
+The first thing you’ll need to do anything on the Binance Chain is an account. Each account has a public key and a private key. It is created by a user of the blockchain. It also includes account number and sequence number for replay protection.
 
 Because the private key must be kept secret, you can generate the private key with the following command:
 

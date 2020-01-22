@@ -1,9 +1,7 @@
 {
   "docs": {
-    "Guides": ["doc1","doc2"],
-    "Basic Concepts": ["doc3"]
-  },
-  "Workthrough": {
-    "Setup Fullnode": ["doc4"]
+    "Guides": ["doc1","doc2","doc3"],
+    "Basic Concepts": ["Accounts","Assets"],
+    "Workthrough":["doc4"]
   }
 }

@@ -1,3 +1,8 @@
+---
+id: doc4
+title: Steps to Run a Full Node
+---
+
 # Steps to Run a Full Node
 
 ### Option One: Installation Script
