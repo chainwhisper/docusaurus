@@ -15,8 +15,9 @@ The balance (the amount of tokens) of each asset is composed of 3 different part
 You can query the account info with the following command on mainnet:
 ```
 ./bnbcli account <your-address> --chain-id Binance-Chain-Tigris --node https://dataseed5.defibit.io:443 --indent --trust-node
-Example output:
 ```
+
+Example output:
 
 Please note that the amount is boosted by e^8 for the decimal part.
 

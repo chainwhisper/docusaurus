@@ -1,7 +1,7 @@
 {
   "docs": {
     "Guides": ["doc1","doc2","doc3"],
-    "Basic Concepts": ["Accounts","Assets"],
+    "Basic Concepts": ["Accounts","Assets","Dex"],
     "Workthrough":["doc4"]
   }
 }
