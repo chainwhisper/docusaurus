@@ -39,10 +39,14 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'doc1', label: 'Guides'},
-    {doc: 'reference/Reference', label: 'API Reference'},
+    {doc: 'readme', label: 'API Reference'},
     {page: 'help', label: 'Tools'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
+    {
+      href: 'https://github.com/binance-chain/node-binary',
+      label: 'GitHub',
+    },
   ],
 
   // If you have users set above, you add it here:
@@ -95,7 +99,7 @@ const siteConfig = {
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
-  // docsSideNavCollapsible: true,
+  docsSideNavCollapsible: true,
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,

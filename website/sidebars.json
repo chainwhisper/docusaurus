@@ -2,7 +2,11 @@
   "docs": {
     "Guides": ["doc1","doc2","doc3"],
     "Basic Concepts": ["Accounts","Assets","Dex","Testnet"],
-    "Workthrough":["doc4"],
-    "API Reference":["Reference","Rpc"]
+    "Workthrough":["doc4"]
+   },
+  "tutorial": {
+    "Tutorial": [
+      "readme","api/rpc"
+    ]
   }
 }

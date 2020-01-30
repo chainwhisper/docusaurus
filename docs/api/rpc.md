@@ -1,7 +1,7 @@
 ---
-id: Rpc
+id: rpc
 title: Node RPC
-sidebar_label: API Reference
+sidebar_label: RPC Reference
 ---
 
 
@@ -19,7 +19,7 @@ Alternatively, you are able to use a node that is hosted in the Binance Chain ne
 
 ### 1.2 Use an existing node on the network
 
-The Binance Chain infrastructure deployment contains so-called "data seed" nodes, which have their RPC ports available for access. To find a seed node that is available, you can use the [peers](./dex-api/paths.md#apiv1peers) endpoint to get a list of network peers.
+The Binance Chain infrastructure deployment contains so-called "data seed" nodes, which have their RPC ports available for access. To find a seed node that is available, you can use the [peers](https://dex.binance.org/api/v1/peers) endpoint to get a list of network peers.
 
 Here is an example of a node that is available for RPC access. The following is the output of `localhost:27147/status`:
 
@@ -106,7 +106,7 @@ Transaction hash: 3592BB385569BBFE346907365CFAED9341B85BAD2920B5E0B174484ECA3CD1
 curl 'localhost:27147/broadcast_tx_sync?tx=0xdb01f0625dee0a63ce6dc0430a14813e4939f1567b219704ffc2ad4df58bde010879122b383133453439333946313536374232313937303446464332414434444635384244453031303837392d34331a0d5a454252412d3136445f424e422002280130c0843d38904e400112700a26eb5ae9872102139bdd95de72c22ac2a2b0f87853b1cca2e8adf9c58a4a689c75d3263013441a1240598c3a74dc08d82d97668ed3523a105a2afb752c5be34d09fb5f3158d55db2f545a2466263cf80f02d1184dd50efc4d8a636a262909a632ebeddeaa426c092b218d2e518202a'
 ```
 
-> Response:
+**Response:**
 
 ```json
 {
@@ -148,7 +148,7 @@ An HTTP Get request to the root RPC endpoint shows a list of available endpoints
 curl 'localhost:27147'
 ```
 
-> Response:
+**Response:**
 
 **Available endpoints that don't require arguments:**
 
@@ -224,7 +224,7 @@ defer client.Stop()
 info, err := client.ABCIInfo()
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -489,7 +489,7 @@ defer client.Stop()
 info, err := client.NetInfo()
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -662,7 +662,7 @@ defer client.Stop()
 genesis, err := client.Genesis()
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -1511,7 +1511,7 @@ defer client.Stop()
 result, err := client.Health()
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -1560,7 +1560,7 @@ defer client.Stop()
 result, err := client.UnconfirmedTxs()
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -1608,7 +1608,7 @@ defer client.Stop()
 result, err := client.Status()
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -1717,9 +1717,9 @@ defer client.Stop()
 result, err := client.ABCIQuery("/store/acc/key", "6163636F756E743A89F856CB39D25C1BDDAAEC74A381577CA8E2F886", true)
 ```
 
-> The above command returns JSON structured like this:
->
-> Please note that the response is amino-encoded.
+The above command returns JSON structured like this:
+
+> Please note that the response is [amino-encode](github.com/binance-chain/bnc-go-amino).
 
 ```json
 {
@@ -1757,7 +1757,7 @@ defer client.Stop()
 account, err := client.GetAccount("Your address")
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -1820,7 +1820,7 @@ defer client.Stop()
 info, err := client.Block(10)
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -1908,7 +1908,7 @@ defer client.Stop()
 info, err := client.BlockResults(10)
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -1976,7 +1976,7 @@ defer client.Stop()
 info, err := client.BlockchainInfo(10, 10)
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -2063,7 +2063,7 @@ defer client.Stop()
 info, err := client.Commit(100)
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -2293,7 +2293,7 @@ defer client.Stop()
 tx, err := client.Tx([]byte("AB1B84C7C0B0B195941DCE9CFE1A54214B72D5DB54AD388D8B146A6B62911E8E"), true)
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -2391,7 +2391,7 @@ q, err := tmquery.New("tx.height=10000")
 tx, err := client.TxSearch(q, true)
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -2816,7 +2816,7 @@ go func() {
 }()
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -2850,7 +2850,7 @@ defer client.Stop()
 err = client.Unsubscribe("test-client", query)
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {
@@ -2880,7 +2880,7 @@ defer client.Stop()
 err = client.UnsubscribeAll("test-client")
 ```
 
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 {

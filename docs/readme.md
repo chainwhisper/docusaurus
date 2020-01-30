@@ -1,7 +1,7 @@
 ---
-id: Reference
+id: readme
 title: Binance Chain API Reference
-sidebar_label: API Reference
+sidebar_label: API Guides
 ---
 
 ## REST API
