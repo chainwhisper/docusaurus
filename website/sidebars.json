@@ -1,12 +1,13 @@
 {
   "docs": {
-    "Guides": ["doc1","doc2","doc3"],
+    "Guides": ["intro","create-wallet","transfer"],
     "Basic Concepts": ["Accounts","Assets","Dex","Testnet"],
-    "Workthrough":["doc4"]
+    "Workthrough":["fullnode"]
    },
-  "tutorial": {
-    "Tutorial": [
-      "readme","api/rpc"
-    ]
+  "API": {
+    "API Reference": [
+      "readme","api/rpc","api/http"
+    ],
+    "Go SDK":["api/go-intro","api/go-example","api/go-api","api/go-websocket"]
   }
 }

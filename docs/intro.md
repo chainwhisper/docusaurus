@@ -1,5 +1,5 @@
 ---
-id: doc1
+id: intro
 title: What are Binance Chain and Binance DEX?
 sidebar_label: Introduction
 ---

@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Binance Chain Documentation', // Title for your website.
+  title: 'Developers', // Title for your website.
   tagline: 'A website for understanding Binance Chain & DEX',
   url: 'https://huangsuyu.github.io', // Your website URL
   baseUrl: '/docusaurus/', // Base URL for your project */
@@ -38,7 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Guides'},
+    {doc: 'intro', label: 'Guides'},
     {doc: 'readme', label: 'API Reference'},
     {page: 'help', label: 'Tools'},
     {page: 'help', label: 'Help'},
@@ -47,20 +47,23 @@ const siteConfig = {
       href: 'https://github.com/binance-chain/node-binary',
       label: 'GitHub',
     },
+    { search: true },
+  // Determines language drop down position among links
+    { languages: true },
   ],
 
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: '',
+  headerIcon: 'img/logo.svg',
   footerIcon: '',
   favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2980B9',
-    secondaryColor: '#434a35',
+    primaryColor: '#212833',
+    secondaryColor: '#F0B90B',
   },
 
   /* Custom fonts for website */
@@ -102,14 +105,16 @@ const siteConfig = {
   docsSideNavCollapsible: true,
 
   // Show documentation's last contributor's name.
-  // enableUpdateBy: true,
+  enableUpdateBy: true,
 
   // Show documentation's last update time.
-  // enableUpdateTime: true,
+  enableUpdateTime: true,
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   //   repoUrl: 'https://github.com/facebook/test-site',
+  usePrism: ['jsx']
+
 };
 
 module.exports = siteConfig;

@@ -1,5 +1,5 @@
 ---
-id: doc4
+id: fullnode
 title: Steps to Run a Full Node
 ---
 

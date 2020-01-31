@@ -1,9 +1,9 @@
 ---
-id: doc2
+id: create-wallet
 title: Creating a Wallet on Binance Chain Web Wallet
 ---
 
-To start, navigate to the Binance Chain [homepage](https://www.binance.org/en) (or [testnet](https://testnet.binance.org/en/) if you wish to test using testnet funds) and click on “Create Wallet” in the upper left-hand corner of your screen.
+To start, navigate to the Binance Chain <u>[homepage](https://www.binance.org/en)</u>(or<u>[testnet](https://testnet.binance.org/en/)</u> if you wish to test using testnet funds) and click on “Create Wallet” in the upper left-hand corner of your screen.
 
 You will be prompted with a tutorial on how to create a wallet directly on the website. Read it carefully!
 
@@ -52,6 +52,6 @@ Congratulations. You’ve created a wallet on the Binance Chain. You may now use
 ![new3](assets/new3.png)
 
 
-To keep your fund safe, please read this guide [here](https://community.binance.org/topic/289/best-practice-to-safely-use-binance-dex).
+To keep your fund safe, please read this guide <u>[here](https://community.binance.org/topic/289/best-practice-to-safely-use-binance-dex)</u>.
 
 
