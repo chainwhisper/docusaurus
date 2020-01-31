@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Go Websocket Client · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Substribe to events"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Go Websocket Client · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://huangsuyu.github.io/docusaurus/"/><meta property="og:description" content="## Substribe to events"/><meta property="og:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://huangsuyu.github.io/docusaurus/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://huangsuyu.github.io/docusaurus/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus/css/prism.css"/><link rel="stylesheet" href="/docusaurus/css/main.css"/><script src="/docusaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus/"><img class="logo" src="/docusaurus/img/logo.svg" alt="Developers"/><h2 class="headerTitleWithLogo">Developers</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docusaurus/docs/intro" target="_self">Guides</a></li><li class="siteNavGroupActive"><a href="/docusaurus/docs/readme" target="_self">API Reference</a></li><li class=""><a href="/docusaurus/help" target="_self">Tools</a></li><li class=""><a href="/docusaurus/help" target="_self">Help</a></li><li class=""><a href="/docusaurus/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/binance-chain/node-binary" target="_self">GitHub</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Go SDK</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">API Reference<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/readme">API Guides</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/rpc">RPC Reference</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/http">HTTP API Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Go SDK<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/go-intro">Go SDK Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/go-example">Go SDK Examples</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/go-api">Go SDK Functions</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus/docs/api/go-websocket">Go Websocket Client</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Go Websocket Client</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="substribe-to-events"></a><a href="#substribe-to-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substribe to events</h2>
+<h3><a class="anchor" aria-hidden="true" id="1-new-block-height"></a><a href="#1-new-block-height" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>1. New Block Height</strong></h3>
+<ul>
+<li>Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err := client.SubscribeBlockHeightEvent(quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(event *websocket.BlockHeightEvent)</span></span> {
+        bz, _ := json.Marshal(event)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+        <span class="hljs-comment">//Todo your process logic here</span>
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+    }, <span class="hljs-literal">nil</span>)
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type BlockHeightEvent struct {
+    BlockHeight int64 `json:<span class="hljs-string">"h"</span>` // The latest block height, <span class="hljs-string">"h"</span>: <span class="hljs-number">1499405658658</span>,
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python">{h: <span class="hljs-number">2867288</span>}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="2-order-event"></a><a href="#2-order-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>2. Order Event</strong></h3>
+<ul>
+<li>Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err = client.SubscribeTradeEvent(tradeSymbol, types.NativeSymbol, quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(events []*websocket.TradeEvent)</span></span> {
+        bz, err := json.Marshal(events)
+        assert.NoError(t, err)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+        assert.NoError(t, err)
+    }, <span class="hljs-literal">nil</span>)
+
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type OrderEvent struct {
+    EventType            string       `json:<span class="hljs-string">"e"</span>` // Event type <span class="hljs-keyword">for</span> this order
+    EventTime            int64        `json:<span class="hljs-string">"E"</span>` // Event height
+    Symbol               string       `json:<span class="hljs-string">"s"</span>` // Token symbol
+    Side                 int8         `json:<span class="hljs-string">"S"</span>` // Trade side: <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> Buy; <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> Sell
+    OrderType            int8         `json:<span class="hljs-string">"o"</span>` // Order type, <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> only support LIMIT
+    TimeInForce          int8         `json:<span class="hljs-string">"f"</span>` // Time <span class="hljs-keyword">in</span> force,  <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> Good Till Expire (GTE); <span class="hljs-number">3</span> <span class="hljs-keyword">for</span> Immediate Or Cancel (IOC)
+    OrderQty             types.Fixed8 `json:<span class="hljs-string">"q"</span>` // Order quantity
+    OrderPrice           types.Fixed8 `json:<span class="hljs-string">"p"</span>` // Order price
+    CurrentExecutionType string       `json:<span class="hljs-string">"x"</span>` // Current execution type: <span class="hljs-string">"NEW"</span>, always `NEW` <span class="hljs-keyword">for</span> now `will be published`
+    CurrentOrderStatus   string       `json:<span class="hljs-string">"X"</span>` //Current order status, possible values Ack, Canceled, Expired, IocNoFill, PartialFill, FullyFill, FailedBlocking, FailedMatching, Unknown
+    OrderID              string       `json:<span class="hljs-string">"i"</span>` //  Order ID
+    LastExecutedQty      types.Fixed8 `json:<span class="hljs-string">"l"</span>` // Last executed quantity
+    LastExecutedPrice    types.Fixed8 `json:<span class="hljs-string">"L"</span>` // Last executed price
+    CommulativeFilledQty types.Fixed8 `json:<span class="hljs-string">"z"</span>` // Cumulative filled quantity
+    CommissionAmount     string       `json:<span class="hljs-string">"n"</span>` //  Commission amount <span class="hljs-keyword">for</span> all user trades within a given block. Fees will be displayed <span class="hljs-keyword">with</span> each order but will be charged once. Fee can be composed of a single symbol, ex: <span class="hljs-string">"10000BNB"</span> <span class="hljs-keyword">or</span> multiple symbols <span class="hljs-keyword">if</span> the available <span class="hljs-string">"BNB"</span> balance <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> enough to cover the whole fees, ex: <span class="hljs-string">"1.00000000BNB;0.00001000BTC;0.00050000ETH"</span>
+    TransactionTime      int64        `json:<span class="hljs-string">"T"</span>` // Transaction time
+    TradeID              string       `json:<span class="hljs-string">"t"</span>` // Trade ID
+    OrderCreationTime    int64        `json:<span class="hljs-string">"O"</span>` // Order creation time
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python"> {
+    <span class="hljs-string">"stream"</span>: <span class="hljs-string">"orders"</span>,
+    <span class="hljs-string">"data"</span>: [{
+        <span class="hljs-string">"e"</span>: <span class="hljs-string">"executionReport"</span>,
+        <span class="hljs-string">"E"</span>: <span class="hljs-number">1499405658658</span>,
+        <span class="hljs-string">"s"</span>: <span class="hljs-string">"ETH_BTC"</span>,
+        <span class="hljs-string">"S"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-string">"o"</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-string">"f"</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-string">"q"</span>: <span class="hljs-string">"1.00000000"</span>,
+        <span class="hljs-string">"p"</span>: <span class="hljs-string">"0.10264410"</span>,
+        <span class="hljs-string">"x"</span>: <span class="hljs-string">"NEW"</span>,
+        <span class="hljs-string">"X"</span>: <span class="hljs-string">"Ack"</span>,
+        <span class="hljs-string">"i"</span>: <span class="hljs-string">"91D9...7E18-2317"</span>,
+        <span class="hljs-string">"l"</span>: <span class="hljs-string">"0.00000000"</span>,
+        <span class="hljs-string">"z"</span>: <span class="hljs-string">"0.00000000"</span>,
+        <span class="hljs-string">"L"</span>: <span class="hljs-string">"0.00000000"</span>,
+        <span class="hljs-string">"n"</span>: <span class="hljs-string">"10000BNB"</span>,
+        <span class="hljs-string">"T"</span>: <span class="hljs-number">1499405658657</span>,
+        <span class="hljs-string">"t"</span>: <span class="hljs-string">"TRD1"</span>,
+        <span class="hljs-string">"O"</span>: <span class="hljs-number">1499405658657</span>,
+    }
+  }
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="3-trade-event"></a><a href="#3-trade-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>3. Trade Event</strong></h3>
+<ul>
+<li>Code Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err = client.SubscribeTradeEvent(tradeSymbol, types.NativeSymbol, quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(events []*websocket.TradeEvent)</span></span> {
+        bz, err := json.Marshal(events)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+    }, <span class="hljs-literal">nil</span>)
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type TradeEvent struct {
+    EventType     string       `json:<span class="hljs-string">"e"</span>`  // Event type
+    EventTime     int64        `json:<span class="hljs-string">"E"</span>`  // Event height
+    Symbol        string       `json:<span class="hljs-string">"s"</span>`  // Asset Symbol
+    TradeID       string       `json:<span class="hljs-string">"t"</span>`  // Trade ID
+    Price         types.Fixed8 `json:<span class="hljs-string">"p"</span>`  // Price
+    Qty           types.Fixed8 `json:<span class="hljs-string">"q"</span>`  // Quantity
+    BuyerOrderID  string       `json:<span class="hljs-string">"b"</span>`  // Buyer order ID
+    SellerOrderID string       `json:<span class="hljs-string">"a"</span>`  // Seller order ID
+    TradeTime     int64        `json:<span class="hljs-string">"T"</span>`  // Trade time
+    SellerAddress string       `json:<span class="hljs-string">"sa"</span>` // SellerAddress
+    BuyerAddress  string       `json:<span class="hljs-string">"ba"</span>` // BuyerAddress
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python">{
+    <span class="hljs-string">"stream"</span>: <span class="hljs-string">"trades"</span>,
+    <span class="hljs-string">"data"</span>: [{
+        <span class="hljs-string">"e"</span>: <span class="hljs-string">"trade"</span>,
+        <span class="hljs-string">"E"</span>: <span class="hljs-number">123456789</span>,
+        <span class="hljs-string">"s"</span>: <span class="hljs-string">"BNB_BTC"</span>,
+        <span class="hljs-string">"t"</span>: <span class="hljs-string">"12345"</span>,
+        <span class="hljs-string">"p"</span>: <span class="hljs-string">"0.001"</span>,
+        <span class="hljs-string">"q"</span>: <span class="hljs-string">"100"</span>,
+        <span class="hljs-string">"b"</span>: <span class="hljs-string">"88"</span>,
+        <span class="hljs-string">"a"</span>: <span class="hljs-string">"50"</span>,
+        <span class="hljs-string">"T"</span>: <span class="hljs-number">123456785</span>,
+        <span class="hljs-string">"sa"</span>: <span class="hljs-string">"bnb1me5u083m2spzt8pw8vunprnctc8syy64hegrcp"</span>,
+        <span class="hljs-string">"ba"</span>: <span class="hljs-string">"bnb1kdr00ydr8xj3ydcd3a8ej2xxn8lkuja7mdunr5"</span>
+    }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="4-market-diff-event"></a><a href="#4-market-diff-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>4. Market Diff Event</strong></h3>
+<ul>
+<li>Code Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err = client.SubscribeMarketDiffEvent(tradeSymbol, types.NativeSymbol, quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(event *websocket.MarketDeltaEvent)</span></span> {
+        bz, err := json.Marshal(event)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+    }, <span class="hljs-literal">nil</span>)
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type MarketDeltaEvent struct {
+    EventType string           `json:<span class="hljs-string">"e"</span>` //  Event type
+    EventTime int64            `json:<span class="hljs-string">"E"</span>` //  Event height
+    Symbol    string           `json:<span class="hljs-string">"s"</span>` // Asset Symbol
+    Bids      [][]types.Fixed8 `json:<span class="hljs-string">"b"</span>` // Bid Price
+    Asks      [][]types.Fixed8 `json:<span class="hljs-string">"a"</span>` // Ask Price
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python">{
+    <span class="hljs-string">"stream"</span>: <span class="hljs-string">"marketDiff"</span>,
+    <span class="hljs-string">"data"</span>: {
+        <span class="hljs-string">"e"</span>: <span class="hljs-string">"depthUpdate"</span>,   // Event type
+        <span class="hljs-string">"E"</span>: <span class="hljs-number">123456789</span>,       // Event time
+        <span class="hljs-string">"s"</span>: <span class="hljs-string">"BNB_BTC"</span>,       // Symbol
+        <span class="hljs-string">"b"</span>: [                // Bids to be updated
+            [
+            <span class="hljs-string">"0.0024"</span>,         // Price level to be updated
+            <span class="hljs-string">"10"</span>              // Quantity
+            ]
+        ],
+        <span class="hljs-string">"a"</span>: [                // Asks to be updated
+            [
+            <span class="hljs-string">"0.0026"</span>,         // Price level to be updated
+            <span class="hljs-string">"100"</span>             // Quantity
+            ]
+        ]
+    }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="5-market-depth--event"></a><a href="#5-market-depth--event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>5. Market Depth  Event</strong></h3>
+<ul>
+<li>Code Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err = client.SubscribeMarketDepthEvent(tradeSymbol, types.NativeSymbol, quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(event *websocket.MarketDepthEvent)</span></span> {
+        bz, err := json.Marshal(event)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+    }, <span class="hljs-literal">nil</span>)
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type MarketDepthEvent struct {
+    LastUpdateID int64    `json:<span class="hljs-string">"lastUpdateId"</span>` // <span class="hljs-string">"lastUpdateId"</span>: <span class="hljs-number">160</span>,
+    Symbol       string    `json:<span class="hljs-string">"symbol"</span>`  //  asset symbol
+    Bids         [][]types.Fixed8 `json:<span class="hljs-string">"bids"</span>` // array of bids
+    Asks         [][]types.Fixed8 `json:<span class="hljs-string">"asks"</span>`  // array of ask
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python">{
+    <span class="hljs-string">"stream"</span>: <span class="hljs-string">"marketDepth"</span>,
+    <span class="hljs-string">"data"</span>: {
+        <span class="hljs-string">"lastUpdateId"</span>: <span class="hljs-number">160</span>,    // Last update ID
+        <span class="hljs-string">"symbol"</span>: <span class="hljs-string">"BNB_BTC"</span>,    // symbol
+        <span class="hljs-string">"bids"</span>: [               // Bids to be updated
+            [
+            <span class="hljs-string">"0.0024"</span>,           // Price level to be updated
+            <span class="hljs-string">"10"</span>                // Quantity
+            ]
+        ],
+        <span class="hljs-string">"asks"</span>: [               // Asks to be updated
+            [
+            <span class="hljs-string">"0.0026"</span>,           // Price level to be updated
+            <span class="hljs-string">"100"</span>               // Quantity
+            ]
+        ]
+    }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="6-account--event"></a><a href="#6-account--event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>6. Account  Event</strong></h3>
+<ul>
+<li>Code Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err := client.SubscribeAccountEvent(client.GetKeyManager().GetAddr().String(), quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(event *websocket.AccountEvent)</span></span> {
+        bz, _ := json.Marshal(event)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+}, <span class="hljs-literal">nil</span>)
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type AccountEvent struct {
+    EventType string              `json:<span class="hljs-string">"e"</span>` // Event type
+    EventTime int64               `json:<span class="hljs-string">"E"</span>` // Event time
+    Balances  []EventAssetBalance `json:<span class="hljs-string">"B"</span>` // list of changes to account
+}
+</code></pre>
+<pre><code class="hljs css language-python">type EventAssetBalance struct {
+    Asset  string       `json:<span class="hljs-string">"a"</span>` // Asset Symbol
+    Free   types.Fixed8 `json:<span class="hljs-string">"f"</span>` // Free amount
+    Frozen types.Fixed8 `json:<span class="hljs-string">"r"</span>` // Frozen amount
+    Locked types.Fixed8 `json:<span class="hljs-string">"l"</span>` // Locked amount
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python">{
+    <span class="hljs-string">"stream"</span>: <span class="hljs-string">"accounts"</span>,
+    <span class="hljs-string">"data"</span>: [{
+      <span class="hljs-string">"e"</span>: <span class="hljs-string">"outboundAccountInfo"</span>,   // Event type
+      <span class="hljs-string">"E"</span>: <span class="hljs-number">1499405658849</span>,           // Event height
+      <span class="hljs-string">"B"</span>: [                        // Balances array
+        {
+          <span class="hljs-string">"a"</span>: <span class="hljs-string">"LTC"</span>,               // Asset
+          <span class="hljs-string">"f"</span>: <span class="hljs-string">"17366.18538083"</span>,    // Free amount
+          <span class="hljs-string">"l"</span>: <span class="hljs-string">"0.00000000"</span>,        // Locked amount
+          <span class="hljs-string">"r"</span>: <span class="hljs-string">"0.00000000"</span>         // Frozen amount
+        },
+        {
+          <span class="hljs-string">"a"</span>: <span class="hljs-string">"BTC"</span>,
+          <span class="hljs-string">"f"</span>: <span class="hljs-string">"10537.85314051"</span>,
+          <span class="hljs-string">"l"</span>: <span class="hljs-string">"2.19464093"</span>,
+          <span class="hljs-string">"r"</span>: <span class="hljs-string">"0.00000000"</span>
+        },
+        {
+          <span class="hljs-string">"a"</span>: <span class="hljs-string">"ETH"</span>,
+          <span class="hljs-string">"f"</span>: <span class="hljs-string">"17902.35190619"</span>,
+          <span class="hljs-string">"l"</span>: <span class="hljs-string">"0.00000000"</span>,
+          <span class="hljs-string">"r"</span>: <span class="hljs-string">"0.00000000"</span>
+        }
+      ]
+    }]
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="7-kline--event"></a><a href="#7-kline--event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>7. KLine  Event</strong></h3>
+<ul>
+<li>Code Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err = client.SubscribeKlineEvent(tradeSymbol, types.NativeSymbol, websocket.OneMinuteInterval, quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(event *websocket.KlineEvent)</span></span> {
+        bz, err := json.Marshal(event)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+}, <span class="hljs-literal">nil</span>)
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type KlineEvent struct {
+    EventType string           `json:"e"` // Event type
+    EventTime int64            `json:"E"`  // Event height
+    Symbol    string           `json:"s"` // Asset symbol
+    Kline     KlineRecordEvent `json:"k"` //list of kline record
+}
+
+// KlineRecordEvent record structure as received from the kafka messages stream
+type KlineRecordEvent struct {
+    Timestamp        int64        `json:"-"`
+    Symbol           string       `json:"s"` // Symbol
+    OpenTime         int64        `json:"t"` // Kline start time
+    CloseTime        int64        `json:"T"` // Kline close time
+    Interval         string       `json:"i"` // Interval
+    FirstTradeID     string       `json:"f"` // First trade ID
+    LastTradeID      string       `json:"L"` // Last trade ID
+    OpenPrice        types.Fixed8 `json:"o"` // Open price
+    ClosePrice       types.Fixed8 `json:"c"` // Close price
+    HighPrice        types.Fixed8 `json:"h"` // High price
+    LowPrice         types.Fixed8 `json:"l"` // Low price
+    Volume           types.Fixed8 `json:"v"` // Base asset volume
+    QuoteAssetVolume types.Fixed8 `json:"q"` // Quote asset volume
+    NumberOfTrades   int32        `json:"n"` // Number of trades
+    Closed           bool         `json:"x"` //Is this kline closed?
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python">{
+  "stream": "kline_1m",
+  "data": {
+    "e": "kline",         // Event type
+    "E": 123456789,       // Event time
+    "s": "BNBBTC",        // Symbol
+    "k": {
+      "t": 123400000,     // Kline start time
+      "T": 123460000,     // Kline close time
+      "s": "BNBBTC",      // Symbol
+      "i": "1m",          // Interval
+      "f": "100",         // First trade ID
+      "L": "200",         // Last trade ID
+      "o": "0.0010",      // Open price
+      "c": "0.0020",      // Close price
+      "h": "0.0025",      // High price
+      "l": "0.0015",      // Low price
+      "v": "1000",        // Base asset volume
+      "n": 100,           // Number of trades
+      "x": false,         // Is this kline closed?
+      "q": "1.0000",      // Quote asset volume
+    }
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="8-ticker--event"></a><a href="#8-ticker--event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>8. Ticker  Event</strong></h3>
+<ul>
+<li>Code Example:</li>
+</ul>
+<pre><code class="hljs css language-go">err := client.SubscribeAllTickerEvent(quit, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(events []*websocket.TickerEvent)</span></span> {
+        bz, _ := json.Marshal(events)
+        fmt.Println(<span class="hljs-keyword">string</span>(bz))
+    }, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(err error)</span></span> {
+    }, <span class="hljs-literal">nil</span>)
+</code></pre>
+<ul>
+<li><strong>Event Data Structure</strong></li>
+</ul>
+<pre><code class="hljs css language-python">type TickerEvent struct {
+    EventType          string       `json:"e"`
+    EventTime          int64        `json:"E"`
+    Symbol             string       `json:"s"` // Symbol
+    PriceChange        types.Fixed8 `json:"p"` // Price change
+    PriceChangePercent types.Fixed8 `json:"P"` // Price change percent
+    WeightedAvgPrice   types.Fixed8 `json:"w"`// Weighted average price
+    PrevClosePrice     types.Fixed8 `json:"x"` // Previous day's close price
+    LastPrice          types.Fixed8 `json:"c"` // Current day's close price
+    LastQuantity       types.Fixed8 `json:"Q"`// Close trade's quantity
+    BidPrice           types.Fixed8 `json:"b"`// Best bid price
+    BidQuantity        types.Fixed8 `json:"B"`// Best bid quantity
+    AskPrice           types.Fixed8 `json:"a"`// Best ask price
+    AskQuantity        types.Fixed8 `json:"A"`// Best ask quantity
+    OpenPrice          types.Fixed8 `json:"o"`// Open price
+    HighPrice          types.Fixed8 `json:"h"`// High price
+    LowPrice           types.Fixed8 `json:"l"` // Low price
+    Volume             types.Fixed8 `json:"v"` // Total traded base asset volume
+    QuoteVolume        types.Fixed8 `json:"q"` // Total traded quote asset volume
+    OpenTime           int64        `json:"O"` // Statistics open time
+    CloseTime          int64        `json:"C"`// Statistics close time
+    FirstID            string       `json:"F"`// First trade ID
+    LastID             string       `json:"L"`// Last trade Id
+    Count              int64        `json:"n"`// Total number of trades
+}
+</code></pre>
+<p><strong>Example</strong>:</p>
+<pre><code class="hljs css language-python">{
+  "stream": "ticker",
+  "data": {
+    "e": "24hrTicker",  // Event type
+    "E": 123456789,     // Event time
+    "s": "BNBBTC",      // Symbol
+    "p": "0.0015",      // Price change
+    "P": "250.00",      // Price change percent
+    "w": "0.0018",      // Weighted average price
+    "x": "0.0009",      // Previous day's close price
+    "c": "0.0025",      // Current day's close price
+    "Q": "10",          // Close trade's quantity
+    "b": "0.0024",      // Best bid price
+    "B": "10",          // Best bid quantity
+    "a": "0.0026",      // Best ask price
+    "A": "100",         // Best ask quantity
+    "o": "0.0010",      // Open price
+    "h": "0.0025",      // High price
+    "l": "0.0010",      // Low price
+    "v": "10000",       // Total traded base asset volume
+    "q": "18",          // Total traded quote asset volume
+    "O": 0,             // Statistics open time
+    "C": 86400000,      // Statistics close time
+    "F": "0",           // First trade ID
+    "L": "18150",       // Last trade Id
+    "n": 18151          // Total number of trades
+  }
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus/docs/api/go-api"><span class="arrow-prev">← </span><span>Go SDK Functions</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#substribe-to-events">Substribe to events</a><ul class="toc-headings"><li><a href="#1-new-block-height"><strong>1. New Block Height</strong></a></li><li><a href="#2-order-event"><strong>2. Order Event</strong></a></li><li><a href="#3-trade-event"><strong>3. Trade Event</strong></a></li><li><a href="#4-market-diff-event"><strong>4. Market Diff Event</strong></a></li><li><a href="#5-market-depth--event"><strong>5. Market Depth  Event</strong></a></li><li><a href="#6-account--event"><strong>6. Account  Event</strong></a></li><li><a href="#7-kline--event"><strong>7. KLine  Event</strong></a></li><li><a href="#8-ticker--event"><strong>8. Ticker  Event</strong></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus/" class="nav-home"></a><div><h5>Docs</h5><a href="/docusaurus/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docusaurus/docs/en/doc2.html">Guides (or other categories)</a><a href="/docusaurus/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/docusaurus/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/docusaurus/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/docusaurus/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 binance.org</section></footer></div></body></html>
