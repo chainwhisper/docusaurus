@@ -63,8 +63,8 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
             <Button href={docUrl('intro.html')}>Overview</Button>
+            <Button href="https://github.com/binance-chain/node-binary">Download</Button>
             <Button href={docUrl('create-wallet.html')}>Binance DEX Tutorial</Button>
           </PromoSection>
         </div>
@@ -100,37 +100,38 @@ class Index extends React.Component {
       </div>
     );
 
-    const TryOut = () => (
+    const LearnHow = () => (
       <Block id="try">
         {[
           {
             content:
-              'To make your landing page more attractive, use illustrations! Check out ' +
-              '[**unDraw**](https://undraw.co/) which provides you with customizable illustrations which are free to use. ' +
-              'The illustrations you see on this page are from unDraw.',
-            image: `${baseUrl}img/undraw_code_review.svg`,
+              'Fast and secure decentralized digital asset exchange.</br>' +
+              'The new crypto currency trading standard is here. ',
+            image: `${baseUrl}img/dex.jpeg`,
             imageAlign: 'left',
-            title: 'Wonderful SVG Illustrations',
+            title: 'Binance DEX Trading Platform',
           },
         ]}
       </Block>
     );
 
     const Description = () => (
-      <Block background="dark">
+      <Block id="bounty" background="light">
         {[
           {
             content:
-              'This is another description of how this project is useful',
-            image: `${baseUrl}img/undraw_note_list.svg`,
+              '<u>[Binance](https://www.binance.com/en)</u> is collaborating with <u>[Bugcrowd](https://bugcrowd.com/binance) </u>'+
+              'for a new round of bug bounty to ensure a more robust security system for DEX trading platform. ' +
+              'In blockchain space, security engineers and researchers play a vital part of building a strong system. ',
+            image: `${baseUrl}img/bugbounty.jpeg`,
             imageAlign: 'right',
-            title: 'Description',
+            title: 'Binance Chain Bug Bounty',
           },
         ]}
       </Block>
     );
 
-    const LearnHow = () => (
+    const TryOut = () => (
       <Block background="light">
         {[
           {
@@ -145,19 +146,24 @@ class Index extends React.Component {
     );
 
     const Features = () => (
-      <Block layout="fourColumn">
+      <Block layout="twoColumn">
         {[
           {
-            content: 'This is the content of my feature',
-            image: `${baseUrl}img/undraw_react.svg`,
+            content: '<u>Run your full node</u>.</br>'+
+            'How to transfer BNB</br>'+
+            'How to trade on Binance DEX </br>'+
+            'Secure your funds',
+            image: `${baseUrl}img/guides.png`,
             imageAlign: 'top',
-            title: 'Feature One',
+            title: 'Guides',
           },
           {
-            content: 'The content of my second feature',
-            image: `${baseUrl}img/undraw_operating_system.svg`,
+            content: ' <a href="/docusaurus/docs/api/rpc"> <u>REST API</u></a> </br>' +
+                      'G0 SDK </br>'+
+                      'JS SDK',
+            image: `${baseUrl}img/sdk.jpeg`,
             imageAlign: 'top',
-            title: 'Feature Two',
+            title: ' Reference & SDKs',
           },
         ]}
       </Block>
@@ -180,14 +186,11 @@ class Index extends React.Component {
 
       return (
         <div className="productShowcaseSection paddingBottom">
-          <h2>Who is Using This?</h2>
-          <p>This project is used by all these people</p>
-          <div className="logos">{showcase}</div>
-          <div className="more-users">
-            <a className="button" href={pageUrl('users.html')}>
-              More {siteConfig.title} Users
-            </a>
-          </div>
+          <form className="mailSignup" action="" target="_blank" rel="noopener noreferrer" noValidate="">
+          <span className="mailSignup__title">Get developer updates:</span>
+          <input type="email" value="" name="EMAIL" className="mailSignup__input" placeholder="email address" required=""/>
+          <input type="submit" value="Sign up" name="subscribe" className="s-button mailSignup__submit spu-textUppercase"/>
+          </form>
         </div>
       );
     };
@@ -197,9 +200,7 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Features />
-          <FeatureCallout />
           <LearnHow />
-          <TryOut />
           <Description />
           <Showcase />
         </div>
