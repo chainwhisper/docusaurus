@@ -1,6 +1,15 @@
 {
   "docs": {
-    "Guides": ["intro","create-wallet","transfer"],
+    "Guides": [
+      "intro",
+      {
+        "type": "subcategory",
+        "label": "End User",
+        "ids": [
+          "enduser/wallet","enduser/explorer"
+        ]
+      },
+    	"create-wallet","transfer"],
     "Basic Concepts": ["Accounts","Assets","Dex","Testnet"],
     "Workthrough":["fullnode"]
    },
