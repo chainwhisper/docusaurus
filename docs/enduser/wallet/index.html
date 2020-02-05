@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Wallets For Binance Chain · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="* List of Wallets Supporting Binance Chain Mainnet"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Wallets For Binance Chain · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://huangsuyu.github.io/docusaurus/"/><meta property="og:description" content="* List of Wallets Supporting Binance Chain Mainnet"/><meta property="og:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://huangsuyu.github.io/docusaurus/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://huangsuyu.github.io/docusaurus/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus/css/prism.css"/><link rel="stylesheet" href="/docusaurus/css/main.css"/><script src="/docusaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus/"><img class="logo" src="/docusaurus/img/logo.svg" alt="Developers"/><h2 class="headerTitleWithLogo">Developers</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docusaurus/docs/intro" target="_self">Guides</a></li><li class=""><a href="/docusaurus/docs/readme" target="_self">API Reference</a></li><li class=""><a href="/docusaurus/help" target="_self">Tools</a></li><li class=""><a href="/docusaurus/help" target="_self">Help</a></li><li class=""><a href="/docusaurus/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/binance-chain/node-binary" target="_self">GitHub</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>End User</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Guides<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/intro">Introduction</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">End User</h4><ul><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus/docs/enduser/wallet">Wallets For Binance Chain</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/enduser/explorer">Binance Chain Explorer</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docusaurus/docs/create-wallet">Creating a Wallet on Binance Chain Web Wallet</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/transfer">Transfer Tokens</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Basic Concepts<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/Accounts">Accounts</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/Assets">Assets</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/Dex">Dex</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/Testnet">Testnet</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Workthrough<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/fullnode">Steps to Run a Full Node</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Wallets For Binance Chain</h1></header><article><div><span><ul>
+<li>List of Wallets Supporting Binance Chain Mainnet</li>
+</ul>
+<p>::: warning Do your own research and take precautions in regards to wallet security. Neither Binance Chain dev team nor binance.com is liable if you lose your funds using these third party wallets. :::</p>
+<p>These community-maintained web and mobile wallets allow you to store &amp; transfer BNB, issue/manage asset, create on-chain governance proposals. Note that we do not endorse any of the wallets, they are listed for your convenience.</p>
+<h2><a class="anchor" aria-hidden="true" id="for-trading-on-binance-dex"></a><a href="#for-trading-on-binance-dex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For trading on Binance DEX</h2>
+<ul>
+<li><a href="https://trustwallet.com">Trust Wallet</a></li>
+<li><a href="https://trubi.io">Trubi Wallet</a></li>
+<li><a href="https://www.mathwallet.org/en">Math Wallet</a></li>
+<li><a href="https://meet.one">MEET.ONE Wallet</a></li>
+<li><a href="https://equal.tech">Equal Wallet</a></li>
+<li><a href="https://magnumwallet.co">Magnum Wallet</a></li>
+<li><a href="http://coinomi.com">Coinomi Wallet</a></li>
+<li><a href="https://zeltrez.io">ZelCore Wallet</a></li>
+<li><a href="https://zeltrez.io">Infinito Wallet</a></li>
+<li><a href="https://ddex.io">DDEX Wallet</a></li>
+<li><a href="https://www.safepal.io">SafePal Wallet</a>: Hardware Wallet</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="for-asset-management"></a><a href="#for-asset-management" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For asset management</h2>
+<ul>
+<li><a href="https://www.ledger.com">Ledger</a>: Hardware Wallet</li>
+<li><a href="https://coolwallet.io">CoolWallet</a>:  Hardware Wallet</li>
+<li><a href="https://atomicwallet.io">Atomic Wallet</a></li>
+<li><a href="https://guarda.co">Guarda Wallet</a></li>
+<li><a href="https://zengo.com">Zengo Wallet</a></li>
+<li><a href="https://hoo.com/">HooWallet</a></li>
+<li><a href="https://cobo.com/">Cobo Wallet</a></li>
+<li><a href="https://www.exodus.io">Exodus</a></li>
+<li><a href="https://www.midasprotocol.io">Midas Wallet</a></li>
+<li><a href="https://arax.io">Arax Wallet</a></li>
+<li><a href="https://pundix.com">Pundi X Wallet</a></li>
+<li><a href="https://www.cosmostation.io">Cosmostation Wallet</a></li>
+<li><a href="https://trezor.io/">Trezor</a></li>
+<li><a href="https://mixin.one">Mixin</a></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/5/2020 by suyu</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus/docs/intro"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/docusaurus/docs/enduser/explorer"><span>Binance Chain Explorer</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#for-trading-on-binance-dex">For trading on Binance DEX</a></li><li><a href="#for-asset-management">For asset management</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus/" class="nav-home"></a><div><h5>Docs</h5><a href="/docusaurus/docs/en/intro.html">Getting Started</a><a href="/docusaurus/docs/en/readme.html">API Reference</a><a href="/docusaurus/docs/en/wallets.html">Wallets</a></div><div><h5>Developer Community</h5><a href="https://binancex.dev/">Project Showcase</a><a href="https://github.com/binance-chain" target="_blank" rel="noreferrer noopener">Github</a><a href="https://t.me/joinchat/IuVfSlYWC5seijz6a0Bjww">Developer Chat</a><a href="https://twitter.com/Binance_DEX" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/docusaurus/blog">Blog</a><a href="https://github.com/binance-chain/node-binary">GitHub</a><a class="github-button" href="https://github.com/binance-chain/node-binary" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 binance.org</section></footer></div></body></html>
