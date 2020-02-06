@@ -13,11 +13,7 @@
       "guides/concepts/cross-chain-atomic-swaps",
       "guides/concepts/threshold-signature-scheme"
     ],
-    "Run a node": [
-      "guides/node/fullnode",
-      "guides/node/lightnode",
-      "guides/node/rpc"
-    ],
+    "Run a node": ["guides/node/fullnode", "guides/node/lightnode"],
     "Walkthroughs": [
       "cookbooks/atomic-swaps",
       "cookbooks/listing",
@@ -26,9 +22,7 @@
   },
   "api-sidebar": {
     "Overview": ["api/api"],
-    "Node RPC": ["api/rpc/rpc"],
-    "CLI Reference": ["api/cli/cli"],
-    "REST API": ["api/http/http"],
+    "Node RPC": ["api/rpc/rpc", "api/rpc/cli", "api/rpc/http"],
     "Javascript SDK": ["api/javascript"],
     "Go SDK": [
       "api/go/go-intro",

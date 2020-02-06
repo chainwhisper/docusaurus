@@ -9,9 +9,6 @@
         "title": "API Reference",
         "sidebar_label": "API Reference"
       },
-      "api/cli/cli": {
-        "title": "CLI Reference"
-      },
       "api/go/go-api": {
         "title": "Go SDK Functions"
       },
@@ -24,15 +21,27 @@
       "api/go/go-websocket": {
         "title": "Go Websocket Client"
       },
-      "api/http/http": {
-        "title": "HTTP API Guide"
-      },
       "api/javascript/javascript": {
         "title": "api/javascript/javascript"
       },
+      "api/rpc/cli": {
+        "title": "CLI Reference"
+      },
+      "api/rpc/http": {
+        "title": "HTTP API Guide"
+      },
       "api/rpc/rpc": {
-        "title": "Node RPC",
+        "title": "Connecting to RPC",
         "sidebar_label": "RPC Reference"
+      },
+      "cookbooks/exchange-integration": {
+        "title": "Exchange Integration"
+      },
+      "cookbooks/launch-stablecoin": {
+        "title": "Launch a Stablecoin"
+      },
+      "cookbooks/listing": {
+        "title": "How to list on Binance DEX"
       },
       "enduser/explorer": {
         "title": "Binance Chain Explorer"
@@ -52,14 +61,26 @@
       "guides/concepts/cross-chain-atomic-swaps": {
         "title": "Cross-chain Atomic Swaps"
       },
+      "guides/concepts/encoding": {
+        "title": "Encoding"
+      },
       "guides/concepts/fees": {
-        "title": "guides/concepts/fees"
+        "title": "Fees"
+      },
+      "guides/concepts/governance": {
+        "title": "Governance"
       },
       "guides/concepts/matching-engine": {
         "title": "Matching Engine"
       },
       "guides/concepts/threshold-signature-scheme": {
         "title": "Threshold Signature Scheme"
+      },
+      "guides/concepts/trading-specification": {
+        "title": "Trading Specification"
+      },
+      "guides/concepts/walletconnect": {
+        "title": "Wallet Connect"
       },
       "guides/intro/create-wallet": {
         "title": "Creating a Wallet"
@@ -94,9 +115,7 @@
       "Run a node": "Run a node",
       "Walkthroughs": "Walkthroughs",
       "Overview": "Overview",
-      "RPC Reference": "RPC Reference",
-      "CLI Reference": "CLI Reference",
-      "REST API": "REST API",
+      "Node RPC": "Node RPC",
       "Javascript SDK": "Javascript SDK",
       "Go SDK": "Go SDK",
       "End User Guide": "End User Guide"

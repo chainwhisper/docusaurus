@@ -3,6 +3,10 @@ id: fullnode
 title: Run a Full Node
 ---
 
+- [ ] https://docs.binance.org/fullnode.html
+- [ ] https://docs.binance.org/get-extra-data-from-fullnode.html
+- [ ] https://docs.binance.org/fullnodeissue.html
+
 # Steps to Run a Full Node
 
 ### Option One: Installation Script

@@ -4,6 +4,8 @@ title: API Reference
 sidebar_label: API Reference
 ---
 
+- [ ] https://docs.binance.org/chain-access.html
+
 ## REST API
 
 There are Accelerated Nodes which provide advanced API services for the public

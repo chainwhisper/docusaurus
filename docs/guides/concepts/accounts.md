@@ -3,6 +3,8 @@ id: accounts
 title: Accounts
 ---
 
+- [ ] https://docs.binance.org/account.html
+
 Whenever a new address receives an asset, the corresponding transaction would create an Account for that address, which contains balances across all assets that are owned on this address.
 
 The balance (the amount of tokens) of each asset is composed of 3 different parts:

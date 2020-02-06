@@ -4,6 +4,9 @@ title: Wallets
 ---
 
 - List of Wallets Supporting Binance Chain Mainnet
+- [ ] https://docs.binance.org/get-started.html (copy wallets section)
+- [ ] https://docs.binance.org/account.html (account)
+- [ ] https://docs.binance.org/transfer.html (transfer)
 
 ::: warning Do your own research and take precautions in regards to wallet security. Neither Binance Chain dev team nor binance.com is liable if you lose your funds using these third party wallets. :::
 
