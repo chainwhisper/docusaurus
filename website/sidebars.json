@@ -1,25 +1,47 @@
 {
-  "docs": {
-    "Guides": [
-      "intro",
-      {
-        "type": "subcategory",
-        "label": "End User",
-        "ids": ["enduser/wallet", "enduser/explorer"]
-      },
-      "create-wallet",
-      "transfer"
+  "guides-sidebar": {
+    "Quickstart": [
+      "guides/intro/intro",
+      "guides/intro/create-wallet",
+      "guides/intro/transfer",
+      "guides/intro/testnet"
     ],
-    "Basic Concepts": ["Accounts", "Assets", "Dex", "Testnet"],
-    "Participate": ["fullnode"]
+    "Concepts": [
+      "guides/concepts/accounts",
+      "guides/concepts/assets",
+      "guides/concepts/matching-engine",
+      "guides/concepts/cross-chain-atomic-swaps",
+      "guides/concepts/threshold-signature-scheme"
+    ],
+    "Run a node": [
+      "guides/node/fullnode",
+      "guides/node/lightnode",
+      "guides/node/rpc"
+    ],
+    "Walkthroughs": [
+      "cookbooks/atomic-swaps",
+      "cookbooks/listing",
+      "cookbooks/launch-stablecoin"
+    ]
   },
-  "API": {
-    "API Reference": ["readme", "api/rpc", "api/http"],
+  "api-sidebar": {
+    "Overview": ["api/api"],
+    "Node RPC": ["api/rpc/rpc"],
+    "CLI Reference": ["api/cli/cli"],
+    "REST API": ["api/http/http"],
+    "Javascript SDK": ["api/javascript"],
     "Go SDK": [
-      "api/go-intro",
-      "api/go-example",
-      "api/go-api",
-      "api/go-websocket"
+      "api/go/go-intro",
+      "api/go/go-example",
+      "api/go/go-api",
+      "api/go/go-websocket"
+    ]
+  },
+  "enduser-sidebar": {
+    "End User Guide": [
+      "enduser/how-to-trade",
+      "enduser/wallets",
+      "enduser/explorer"
     ]
   }
 }

@@ -1,6 +1,6 @@
 ---
 id: fullnode
-title: Steps to Run a Full Node
+title: Run a Full Node
 ---
 
 # Steps to Run a Full Node

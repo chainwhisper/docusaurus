@@ -3,6 +3,8 @@ id: http
 title: HTTP API Guide
 ---
 
+- [ ] How does this deconflict with https://docs.binance.org/api-reference/dex-api/ws-streams.html? 
+
 The Binance Chain HTTP API provides access to a Binance Chain node deployment and market data services.
 
 **Version:** 1.0.0

@@ -1,4 +1,4 @@
 ---
-id: Fees
+id: fees
 title: Fees
 ---

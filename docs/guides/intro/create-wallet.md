@@ -1,6 +1,6 @@
 ---
 id: create-wallet
-title: Creating a Wallet on Binance Chain Web Wallet
+title: Creating a Wallet
 ---
 
 To start, navigate to the Binance Chain <u>[homepage](https://www.binance.org/en)</u>(or<u>[testnet](https://testnet.binance.org/en/)</u> if you wish to test using testnet funds) and click on “Create Wallet” in the upper left-hand corner of your screen.
@@ -11,15 +11,15 @@ As a Binance Chain user, you will hold full custody of your funds. No one, not e
 
 Upon creating a wallet, the following will be generated for you. Please store them securely.
 
-* **Keystore (encrypted & password protected)**
+- **Keystore (encrypted & password protected)**
 
 A keystore file contains your private key along with your public key and address (both of which are derived from your private key). This file is encrypted and password protected. This is the recommended way to access your wallet if you do not have access to a supported hardware device.
 
-* **Mnemonic Phrase**
+- **Mnemonic Phrase**
 
 A mnemonic phrase is generated based on a BIP39 word list - this phrase allows you to access your wallet, but should not be used regularly. It is recommended you only use your mnemonic phrase as a backup.
 
-* **Private Key**
+- **Private Key**
 
 This allows you to access your wallet, but should not be used regularly. It is recommended you only use your private key as a backup.
 
@@ -28,7 +28,6 @@ In order to create a keystore file, you will need to assign a password that will
 Once you have entered your password, click “Download Keystore File”.
 
 ![new1](assets/new1.png)
-
 
 In the next step, your mnemonic phrase will be generated. Make sure no one is able to see your screen during this phase.
 
@@ -46,12 +45,8 @@ Hand-write them on paper.
 Do not put your private key or mnemonic phrase in your wallet.
 Store them in a fireproof and waterproof safe/lockbox.
 
-
 Congratulations. You’ve created a wallet on the Binance Chain. You may now use the wallet with the Binance DEX.
 
 ![new3](assets/new3.png)
 
-
 To keep your fund safe, please read this guide <u>[here](https://community.binance.org/topic/289/best-practice-to-safely-use-binance-dex)</u>.
-
-
