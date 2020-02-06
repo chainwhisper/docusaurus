@@ -35,7 +35,7 @@ const BnbApiClient = require('@binance-chain/javascript-sdk');
 const axios = require('axios');
 const bnbClient = new BnbApiClient(api);
 const httpClient = axios.create({ baseURL: api });
-bnbClient.chooseNetwork("testnet"); // or this can be "mainnet"
+bnbClient.chooseNetwork("mainnet"); // or this can be "testnet"
 bnbClient.setPrivateKey(privKey);
 bnbClient.initChain();
 
@@ -49,7 +49,7 @@ console.log('address: ',address)
 //-----   Init KeyManager  -------------
 km, _ := NewKeyManager()
 //-----   Init sdk  -------------
-client, err := sdk.NewDexClient("testnet-dex.binance.org", types.TestNetwork, keyManager)
+client, err := sdk.NewDexClient("dex.binance.org", types.TestNetwork, keyManager)  // api string can be "https://testnet-dex.binance.org" for testnet
 accn,_:=client.GetAccount(client.GetKeyManager().GetAddr().String())
 //-----   Print Address
 fmt.Println(accn)
@@ -81,9 +81,9 @@ const axios = require('axios');
 
 const asset = 'BNB'; // asset string
 const amount = 1.123; // amount float
-const addressTo = 'tbnb1hgm0p7khfk85zpz5v0j8wnej3a90w709zzlffd'; // addressTo string
+const addressTo = 'bnb1jxfh2g85q3v0tdq57fnevx6xcxtcnhtsmcu54m'; // addressTo string
 const message = 'A note to you'; // memo string
-const api = 'https://testnet-dex.binance.org/'; /// api string
+const api = 'https://dex.binance.org/'; /// api string can be "https://testnet-dex.binance.org" for testnet
 
 let privKey = 'DEADBEEF'; // privkey hexstring (keep this safe)
 
@@ -121,14 +121,10 @@ httpClient
 //-----   Init KeyManager  -------------
 keyManager1, _ := NewKeyManager()
 //-----   Init sdk  -------------
-client, err := sdk.NewDexClient("testnet-dex.binance.org", types.TestNetwork, keyManager)
+client, err := sdk.NewDexClient("dex.binance.org", types.TestNetwork, keyManager) //api string can be "testnet-dex.binance.org" for testnet
 accn,_:=client.GetAccount(client.GetKeyManager().GetAddr().String())
 //-----   Init KeyManager  -------------
 keyManager, _ := keys.NewMnemonicKeyManager(mnemonic)
-
-//-----   Init sdk  -------------
-client, err := sdk.NewDexClient("testnet-dex.binance.org", types.TestNetwork, keyManager)
-
 //----   Send tx  -----------
 send, err := client.SendToken([]msg.Transfer{{testAccount2, []ctypes.Coin{{nativeSymbol, 100000000}}}, {testAccount3, []ctypes.Coin{{nativeSymbol, 100000000}}}}, true)
 
