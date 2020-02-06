@@ -4,6 +4,7 @@ title: Accounts
 ---
 
 - [ ] https://docs.binance.org/account.html
+- [ ] https://docs.binance.org/chain-access.html#account-and-sequence-number
 
 Whenever a new address receives an asset, the corresponding transaction would create an Account for that address, which contains balances across all assets that are owned on this address.
 

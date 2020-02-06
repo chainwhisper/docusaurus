@@ -2,7 +2,7 @@
   "guides-sidebar": {
     "Quickstart": [
       "guides/intro/intro",
-      "guides/intro/create-wallet",
+      "guides/intro/create-address",
       "guides/intro/transfer",
       "guides/intro/testnet"
     ],
