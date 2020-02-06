@@ -1,1 +1,2 @@
-# docusaurus
+# Binance Chain Docs
+

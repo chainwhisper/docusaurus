@@ -43,9 +43,9 @@ const address = bnbClient.getClientKeyAddress();
 
 console.log('address: ',address)
 ```
-<!--Golang-->
+<!--Go-->
 
-```golang
+```Go
 //-----   Init KeyManager  -------------
 km, _ := NewKeyManager()
 //-----   Init sdk  -------------
@@ -55,7 +55,7 @@ accn,_:=client.GetAccount(client.GetKeyManager().GetAddr().String())
 fmt.Println(accn)
 ```
 
-<!--python-->
+<!--Python-->
 
 ```py
 from binance_chain.wallet import Wallet
@@ -115,9 +115,9 @@ httpClient
     console.error('error', error);
   });
 ```
-<!--Golang-->
+<!--Go-->
 
-```golang
+```Go
 //-----   Init KeyManager  -------------
 keyManager1, _ := NewKeyManager()
 //-----   Init sdk  -------------
@@ -136,7 +136,7 @@ fmt.Printf("Send token: %v\n", send)
 
 ```
 
-<!--python-->
+<!--Python-->
 
 ```py
 from binance_chain.http import HttpApiClient

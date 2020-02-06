@@ -30,7 +30,7 @@ Please refer to the CLI Reference.
 ### Use SDKs
 
 SDKs are also provided as a starting point for your apps.<br/>
-There are two advanced SDK solutions for Binance chain: [Java](<https://github.com/binance-chain/java-sdk>) and [Golang](<https://github.com/binance-chain/go-sdk>).<br/>
+There are two advanced SDK solutions for Binance chain: [Java](<https://github.com/binance-chain/java-sdk>) and [Go](<https://github.com/binance-chain/go-sdk>).<br/>
 Both solutions provide functions for:<br/>
 
 * Create wallets and manage keys

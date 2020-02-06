@@ -12,7 +12,7 @@ You can connect a node to the testnet by downloading the [node binary](https://g
 
 There is also a [web wallet](https://testnet.binance.org/en/) that can directly interact with the DEX. testnet.
 
-## What is the Stellar testnet good for?
+## What is the testnet good for?
 * Create your test address and get your testnet funds.
 * Develop applications and try tutorials on Binance Chain without the potential to lose your own assets.
 * Test your applications against new versions of Binance Chain.
