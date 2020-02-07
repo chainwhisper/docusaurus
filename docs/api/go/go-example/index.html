@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Go SDK Examples · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Create an address"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Go SDK Examples · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://huangsuyu.github.io/docusaurus/"/><meta property="og:description" content="## Create an address"/><meta property="og:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://huangsuyu.github.io/docusaurus/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://huangsuyu.github.io/docusaurus/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus/css/prism.css"/><link rel="stylesheet" href="/docusaurus/css/main.css"/><script src="/docusaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus/"><img class="logo" src="/docusaurus/img/logo.svg" alt="Developers"/><h2 class="headerTitleWithLogo">Developers</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docusaurus/docs/guides/intro/intro" target="_self">Guides</a></li><li class="siteNavGroupActive"><a href="/docusaurus/docs/api/api" target="_self">API Reference</a></li><li class=""><a href="/docusaurus/docs/enduser/how-to-trade" target="_self">End User</a></li><li class=""><a href="/docusaurus/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/binance-chain/node-binary" target="_self">GitHub</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Go SDK</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/api">API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Node RPC<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/rpc/rpc">RPC Reference</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/rpc/cli">CLI Reference</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/rpc/http">HTTP API Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Go SDK<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/go/go-intro">Go SDK Overview</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus/docs/api/go/go-example">Go SDK Examples</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/go/go-api">Go SDK Functions</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/api/go/go-websocket">Go Websocket Client</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Go SDK Examples</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="create-an-address"></a><a href="#create-an-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create an address</h2>
+<p>In the following example, you can see how to use go-sdk for creating new address in testnet.</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"fmt"</span>
+    <span class="hljs-string">"strconv"</span>
+
+    <span class="hljs-string">"github.com/binance-chain/go-sdk/client"</span>
+    <span class="hljs-string">"github.com/binance-chain/go-sdk/common/ledger"</span>
+    <span class="hljs-string">"github.com/binance-chain/go-sdk/common/types"</span>
+    <span class="hljs-string">"github.com/binance-chain/go-sdk/keys"</span>
+    <span class="hljs-string">"github.com/binance-chain/go-sdk/types/msg"</span>
+)
+
+<span class="hljs-comment">// To run this example, please make sure your key address have more than 1:BNB on testnet</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    types.Network = types.TestNetwork
+
+    <span class="hljs-comment">//create a random key manager</span>
+    keyManager, err := keys.NewKeyManager()
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Println(err.Error())
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">//set receiver address</span>
+    receiverAddr, err := types.AccAddressFromBech32(<span class="hljs-string">"tbnb15339dcwlq5nza4atfmqxfx6mhamywz35he2cvv"</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Println(err.Error())
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">// init dex client</span>
+    dexClient, err := client.NewDexClient(<span class="hljs-string">"testnet-dex.binance.org:443"</span>, types.TestNetwork, keyManager)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Println(err.Error())
+        <span class="hljs-keyword">return</span>
+    }
+
+    account, err := dexClient.GetAccount(keyManager.GetAddr().String())
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Println(err.Error())
+        <span class="hljs-keyword">return</span>
+    }
+
+    floatAmount := <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">for</span> _, coin := <span class="hljs-keyword">range</span> account.Balances {
+        <span class="hljs-keyword">if</span> coin.Symbol == <span class="hljs-string">"BNB"</span> {
+            fmt.Println(fmt.Sprintf(<span class="hljs-string">"Your account has %s:BNB"</span>, coin.Free))
+            floatAmount, err = strconv.ParseFloat(coin.Free.String(), <span class="hljs-number">64</span>)
+            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+                fmt.Println(err.Error())
+                <span class="hljs-keyword">return</span>
+            }
+            <span class="hljs-keyword">break</span>
+        }
+    }
+    <span class="hljs-keyword">if</span> floatAmount &lt;= <span class="hljs-number">1.0</span> {
+        fmt.Println(<span class="hljs-string">"Your account doesn't have enough bnb"</span>)
+    }
+
+    fmt.Println(fmt.Sprintf(<span class="hljs-string">"Please verify sign key address (%s) and transaction data"</span>, types.AccAddress(keyManager.GetAddr()).String()))
+
+    <span class="hljs-comment">//send transaction</span>
+    sendResult, err := dexClient.SendToken([]msg.Transfer{{receiverAddr, types.Coins{types.Coin{Denom: <span class="hljs-string">"BNB"</span>, Amount: <span class="hljs-number">10000000</span>}}}}, <span class="hljs-literal">true</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Println(err.Error())
+        <span class="hljs-keyword">return</span>
+    }
+    fmt.Println(fmt.Sprintf(<span class="hljs-string">"Send result: %t"</span>, sendResult.Ok))
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/31/2020 by suyu</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus/docs/api/go/go-intro"><span class="arrow-prev">← </span><span>Go SDK Overview</span></a><a class="docs-next button" href="/docusaurus/docs/api/go/go-api"><span>Go SDK Functions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#create-an-address">Create an address</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus/" class="nav-home"></a><div><h5>Docs</h5><a href="/docusaurus/docs/en/intro.html">Getting Started</a><a href="/docusaurus/docs/en/api/api.html">API Reference</a><a href="/docusaurus/docs/en/wallets.html">Wallets</a></div><div><h5>Developer Community</h5><a href="https://binancex.dev/">Project Showcase</a><a href="https://github.com/binance-chain" target="_blank" rel="noreferrer noopener">Github</a><a href="https://t.me/joinchat/IuVfSlYWC5seijz6a0Bjww">Developer Chat</a><a href="https://twitter.com/Binance_DEX" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/docusaurus/blog">Blog</a><a href="https://github.com/binance-chain/node-binary">GitHub</a><a class="github-button" href="https://github.com/binance-chain/node-binary" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 binance.org</section></footer></div></body></html>

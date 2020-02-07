@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Run a Full Node · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="- [ ] https://docs.binance.org/fullnode.html"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Run a Full Node · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://huangsuyu.github.io/docusaurus/"/><meta property="og:description" content="- [ ] https://docs.binance.org/fullnode.html"/><meta property="og:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://huangsuyu.github.io/docusaurus/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://huangsuyu.github.io/docusaurus/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus/css/prism.css"/><link rel="stylesheet" href="/docusaurus/css/main.css"/><script src="/docusaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus/"><img class="logo" src="/docusaurus/img/logo.svg" alt="Developers"/><h2 class="headerTitleWithLogo">Developers</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docusaurus/docs/guides/intro/intro" target="_self">Guides</a></li><li class=""><a href="/docusaurus/docs/api/api" target="_self">API Reference</a></li><li class=""><a href="/docusaurus/docs/enduser/how-to-trade" target="_self">End User</a></li><li class=""><a href="/docusaurus/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/binance-chain/node-binary" target="_self">GitHub</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Run a node</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Quickstart<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/intro/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/intro/create-address">Create an address</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/intro/transfer">Make a Transfer</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/intro/testnet">Testnet</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Concepts<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/concepts/accounts">Accounts</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/concepts/assets">Assets</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/concepts/matching-engine">Matching Engine</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/concepts/cross-chain-atomic-swaps">Cross-chain Atomic Swaps</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/concepts/threshold-signature-scheme">Threshold Signature Scheme</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Run a node<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus/docs/guides/node/fullnode">Run a Full Node</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/guides/node/lightnode">Light Node</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Walkthroughs<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/cookbooks/listing">How to list on Binance DEX</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/cookbooks/launch-stablecoin">Launch a Stablecoin</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Run a Full Node</h1></header><article><div><span><ul>
+<li>[ ] <a href="https://docs.binance.org/fullnode.html">https://docs.binance.org/fullnode.html</a></li>
+<li>[ ] <a href="https://docs.binance.org/get-extra-data-from-fullnode.html">https://docs.binance.org/get-extra-data-from-fullnode.html</a></li>
+<li>[ ] <a href="https://docs.binance.org/fullnodeissue.html">https://docs.binance.org/fullnodeissue.html</a></li>
+</ul>
+<h1><a class="anchor" aria-hidden="true" id="steps-to-run-a-full-node"></a><a href="#steps-to-run-a-full-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Steps to Run a Full Node</h1>
+<h3><a class="anchor" aria-hidden="true" id="option-one-installation-script"></a><a href="#option-one-installation-script" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Option One: Installation Script</h3>
+<p>We have a community-maintained installer script (<code>install.sh</code>) that takes care of chain directory setup. This uses the following defaults:</p>
+<ul>
+<li>Home folder in <code>~/.bnbchaind</code></li>
+<li>Client executables stored in <code>/usr/local/bin</code> (i.e. <code>light</code> or <code>bnbchaind</code>)</li>
+</ul>
+<pre><code class="hljs"># One-<span class="hljs-built_in">line</span> install
+<span class="hljs-keyword">sh</span> &lt;(wget -qO- http<span class="hljs-variable">s:</span>//raw.githubusercontent.<span class="hljs-keyword">com</span>/binance-chain/node-binary/compress/install.<span class="hljs-keyword">sh</span>)
+</code></pre>
+<blockquote>
+<p>In the future, we may release an official installer script
+e.g. <code>sh &lt;(wget -qO- https://get.binance.org)</code></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="option-two-manual-installation"></a><a href="#option-two-manual-installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Option Two: Manual Installation</h3>
+<p>We currently use this repo to store historical versions of the compiled <code>node-binaries</code>.</p>
+<ol>
+<li>Install Git LFS</li>
+</ol>
+<p>Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.</p>
+<p>Please go to <a href="https://git-lfs.github.com/">https://git-lfs.github.com/</a> and install <code>git lfs</code>.</p>
+<ol>
+<li>Download Binary with Git LFS:</li>
+</ol>
+<pre><code class="hljs">git lfs <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/binance-chain/<span class="hljs-keyword">node</span><span class="hljs-title">-binary</span>.git
+</code></pre>
+<p>Please go to <a href="https://github.com/binance-chain/node-binary/blob/master/fullnode/Changelog.md">changelog</a> to get the information about the latest release of full node version.</p>
+<p>Go to directory according to the network you want to join in.
+Replace the <code>network</code> variable with <code>testnet</code> or <code>prod</code> in the following command:</p>
+<pre><code class="hljs">cd <span class="hljs-keyword">node</span><span class="hljs-title">-binary</span>/fullnode/{network}/{<span class="hljs-keyword">version</span>}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="initialize-home-folder"></a><a href="#initialize-home-folder" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Initialize Home Folder</h3>
+<p>First you need to choose a home folder <code>$BNCHOME</code> (i.e. ~/.bnbchaind) for Binance Chain.
+You can setup this by:</p>
+<pre><code class="hljs">mkdir ~/.bnbchaind
+mkdir ~/.bnbchaind<span class="hljs-built_in">/config
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="setup-configuration"></a><a href="#setup-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setup Configuration</h3>
+<p>Put <code>app.toml</code>, <code>config.toml</code> and <code>genesis.json</code> from <code>node-binary/fullnode/{network}/{version}/config/</code> into <code>$BNCHOME/config</code></p>
+<h3><a class="anchor" aria-hidden="true" id="add-seed-nodes"></a><a href="#add-seed-nodes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add Seed Nodes</h3>
+<p>For a full node to function, it must connect to one or more known nodes to join Binance Chain.
+There are several famous <code>seed nodes</code> that offer known node addresses in the network to newly joined full nodes.
+They are already in <code>node-binary/fullnode/{network}/{version}/config/config.toml</code> file.</p>
+<p>You cat also get seeds info through a simple python script (replace domain name depending on which network you are using):</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> requests, <span class="hljs-type">json</span>
+d = requests.<span class="hljs-keyword">get</span>(<span class="hljs-string">'https://dex.binance.org/api/v1/peers'</span>).text # replace dex.binance.org <span class="hljs-keyword">with</span> testnet-dex.binance.org <span class="hljs-keyword">for</span> testnet
+l = <span class="hljs-type">json</span>.loads(d)
+seeds = ",".<span class="hljs-keyword">join</span>([ (seed["id"]+"@"+seed["original_listen_addr"]) <span class="hljs-keyword">for</span> seed <span class="hljs-keyword">in</span> l <span class="hljs-keyword">if</span> seed["accelerated"] == <span class="hljs-keyword">False</span>])
+print (seeds)
+</code></pre>
+<p>If you want to add seed nodes, please feel free to edit the field <code>seeds</code> of <code>$BNCHOME/config/config.yaml</code> with returned seed node info from previous request.</p>
+<h4><a class="anchor" aria-hidden="true" id="additional-configuration"></a><a href="#additional-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional Configuration</h4>
+<ul>
+<li>Log: The log file is under <code>home</code>- the directory specified when starting <code>bnbchaind</code>.
+The latest log file is <code>bnc.log</code>. The process will create a new log file every one hour.
+To make sure you have sufficient disk space to keep the log files, we strongly recommend you to change the log location by changing <code>logFileRoot</code> option in <code>$BNCHOME/config/app.toml</code>.</li>
+<li>Service Port: RPC service listens on port <code>27147</code> and P2P service listens on port <code>27146</code> by default.
+Make sure these two ports are open before starting a full node, unless the full node has to listen on other ports.</li>
+<li>Store: All the state and block data will store under <code>$BNCHOME/data</code>, do not delete or edit any of these files.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="start-your-node"></a><a href="#start-your-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Start your node</h4>
+<p>Start the full node according to the platform.
+Replace the <code>platform</code> variable with <code>mac</code> <code>windows</code> or <code>linux</code> in the following command:</p>
+<pre><code class="hljs"><span class="hljs-string">./</span>{{platform}}<span class="hljs-string">/bnbchaind</span> start <span class="hljs-params">--home</span> $BNCHOME&amp;
+</code></pre>
+<p>Only after catching up with Binance Chain, the full node can handle requests correctly.</p>
+<h4><a class="anchor" aria-hidden="true" id="sync-data"></a><a href="#sync-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sync Data</h4>
+<p>There are three ways for you to get synced with other peers in blockchain network:</p>
+<ul>
+<li>Fast Sync</li>
+<li>State Sync</li>
+<li>Hot Sync</li>
+</ul>
+<p>These methods can be used together.</p>
+<h5><a class="anchor" aria-hidden="true" id="fast-sync"></a><a href="#fast-sync" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fast Sync</h5>
+<p>The default way for syncing with other data seed node is fast sync.
+In fast sync, you need to download all the blocks from your peers and execute all the transaction in every block.
+The sync speed is about 20 blocks/s, which is slower than state sync.</p>
+<p>Configuration is located in <code>$BNCHOME/config/config.toml</code>:</p>
+<ul>
+<li><code>fast_sync</code> Must be set to <code>true</code></li>
+<li><code>state_sync_reactor</code> Can be set to <code>false</code> or <code>true</code></li>
+<li><code>state_sync</code> Can be set to <code>false</code> or <code>true</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="state-sync"></a><a href="#state-sync" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>State Sync</h5>
+<p>As explained in <a href="https://github.com/binance-chain/BEPs/blob/master/BEP18.md">BEP18</a>, State sync will get the application state of your full node to be up to date without downloading all of the blocks.The sync speed is faster than fast sync.
+Now you do not need to allocate more memories to your full node for this feature to work.</p>
+<p>Configuration is located in <code>$BNCHOME/config/config.toml</code>:</p>
+<ul>
+<li><code>state_sync_reactor</code> Must be set to <code>true</code></li>
+<li><code>recv_rate</code> Must set to <code>102428800</code></li>
+<li><code>ping_interval</code> Recommendation is set to <code>10m30s</code></li>
+<li><code>pong_timeout</code> Recommendation is set to <code>450s</code></li>
+<li><code>state_sync_height</code> Recommendation is set to <code>0</code>, so it allows to state sync from the peers's latest height.</li>
+</ul>
+<p>State sync can help fullnode in same status with other peers within short time (according to our test, a one month ~800M DB snapshot in binance chain testnet can be synced in around 45 minutes) so that you can receive latest blocks/transactions and query latest status of orderbook, account balances etc.. But state sync DOES NOT download historical blocks before state sync height, if you start your node with state sync and it synced at height 10000, then your local database would only have blocks after height 10000.</p>
+<p>If full node has already started, suggested way is to delete the (after backup) <code>$BNCHOME/data</code> directory and <code>$BNCHOME/config/priv_validator_key.json</code> before enabling state sync.</p>
+<p>State sync will run only once after you start your full node. Once state sync succeeds, later fullnode restart would not state sync anymore. But if you do want state sync again, you need to delete <code>$BNCHOME/data/STATESYNC.LOCK</code>.</p>
+<p>If you turn on the <code>state_sync_reactor</code>, the snapshots of heights will be saved at <code>$HOME/data/snapshot/</code> automatically. To save disk space, you can delete the directory or turn off the <code>state_sync_reactor</code>.</p>
+<h5><a class="anchor" aria-hidden="true" id="hot-sync"></a><a href="#hot-sync" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hot Sync</h5>
+<blockquote>
+<p>Please note that this feature is still expreimental and is not recommended.</p>
+</blockquote>
+<p>In Binance Chain network, almost every fullnode operator will first enable <code>state-sync</code> to get synced with peers. After downloading all the state machine changes, the fullnode will go back to <code>fast-sync</code> mode and eventually in <code>consensus</code> mode. In fast-sync mode, the fullnode will have high delay because it needs to be aware of peers’ heights. It downloads all the blocks in parallel and verifying their commits. On the other hand, when a fullnode is under <code>consensus</code> state, it will consume a lot of bandwidth and CPU resources because it receives a lot of redundant messages for consensus engine and writes more WAL. To increase the efficiency for fullnodes, the <code>hot-sync</code> protocol is introduced. A fullnode under <code>hot-sync</code> protocol will pull the blocks from its peers and it will subscribe these blocks in advance. It will skip the message for prevotes and only subscribe to maj23 precommit and block proposal messages. At the same time, it will put its peers in different buckets and subscribe to peers in active buckets. <code>Hot-Sync</code> can help fullnodes gossip blocks in low latency, while cost less network, memory, cpu and disk resources than Tendermint consensus protocol. Even cheap hardware can easily run a fullnode, and a fullnode can connect with more peers than before by saving network and CPU resources.</p>
+<p>The state transition of a hot sync reactor can be of three part:</p>
+<pre><code class="hljs">                              <span class="hljs-attribute">Hot</span> --&gt; Consensus
+                                <span class="hljs-regexp"> ^</span>   <span class="hljs-regexp"> ^</span>
+                                 |   /
+                                 |  /
+                                Mute
+</code></pre>
+<ol>
+<li><code>Mute</code>: will only answer subscribe requests from others, will not sync from others or from consensus reactor. The Hot Sync reactor stays in <code>Mute</code> when it is fast syncing.</li>
+<li><code>Hot</code>: handle subscribe requests from other peers as a publisher, also subscribe block messages from other peers as a subscriber. A non-validators will stay in <code>Hot</code> when the peer have catch up after fast syncing.</li>
+<li><code>Consensus</code>: handle subscribes requests from other peers as a publisher, but get block/commit message from consensus reactor. A sentry node should stay in <code>Consensus</code>. Or a non-validator should switch from <code>Hot</code> to <code>Consensus</code> when it become a validator.</li>
+</ol>
+<p>Configuration is located in <code>$BNCHOME/config/config.toml</code>:</p>
+<ul>
+<li><code>hot_sync_reactor</code> Must be set to <code>true</code></li>
+<li><code>hot_sync</code> Can be set to <code>false</code> or <code>true</code></li>
+<li><code>hot_sync_timeout</code> is the max wait time for subscribe a block. It only takes effect when hot_sync is true</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="monitor-syncing-process"></a><a href="#monitor-syncing-process" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monitor Syncing Process</h5>
+<p>You can verify if state sync is done by <code>curl localhost:27147/status</code> several times and see whether <code>latest_block_height</code> is increasing in response.</p>
+<pre><code class="hljs"><span class="hljs-string">"sync_info"</span>: {
+  <span class="hljs-string">...</span>
+  <span class="hljs-string">"latest_block_height"</span>: <span class="hljs-string">"878092"</span>,
+  <span class="hljs-string">"latest_block_time"</span>: <span class="hljs-string">"2019-04-15T00:01:22.610803768Z"</span>,
+  <span class="hljs-string">...</span>
+}
+</code></pre>
+<p>If state sync did not succeed, please repeat deletion of <code>$BNCHOME/data</code> directory and <code>$BNCHOME/config/priv_validator_key.json</code> before starting full node next time in case of data inconsistency.</p>
+<p>Once state sync succeeded, later full node restart would not state sync anymore (in case the local blocks are not continuous).
+But if you do want state sync again (don't care that there are missing blocks between last stop and latest state sync snapshot) and you want to keep already synced blocks, you can just delete <code>$BNCHOME/data/STATESYNC.LOCK</code>.</p>
+<p>For example, you start your full node at Jan 1st with state sync at height 10000 and after a while you shut it down at height 22000 on Feb 10th.
+Now its Mar 1st, latest sync-able block height is 50000, you don't care blocks between 22000 and 50000, you can delete <code>$BNCHOME/data/STATESYNC.LOCK</code> before start your node.
+Then the full node would continue state sync from height 50000.</p>
+<p>Turning off <code>state_sync_reactor</code> and <code>state_sync</code> can save your memory after you successfully state synced.</p>
+<h2><a class="anchor" aria-hidden="true" id="upgrading-full-node"></a><a href="#upgrading-full-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Upgrading Full Node</h2>
+<p>In most cases, download the new binary and replace it, then restart the full node.
+In special cases, you may have to do extra steps for an incompatible version (hard fork).</p>
+<h2><a class="anchor" aria-hidden="true" id="monitoring"></a><a href="#monitoring" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monitoring</h2>
+<p>Prometheus is enabled on port <code>28660</code> by default, and the endpoint is <code>/metrics</code>.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/7/2020 by Daniel Onggunhao</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus/docs/guides/concepts/threshold-signature-scheme"><span class="arrow-prev">← </span><span>Threshold Signature Scheme</span></a><a class="docs-next button" href="/docusaurus/docs/guides/node/lightnode"><span>Light Node</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#upgrading-full-node">Upgrading Full Node</a></li><li><a href="#monitoring">Monitoring</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus/" class="nav-home"></a><div><h5>Docs</h5><a href="/docusaurus/docs/en/intro.html">Getting Started</a><a href="/docusaurus/docs/en/api/api.html">API Reference</a><a href="/docusaurus/docs/en/wallets.html">Wallets</a></div><div><h5>Developer Community</h5><a href="https://binancex.dev/">Project Showcase</a><a href="https://github.com/binance-chain" target="_blank" rel="noreferrer noopener">Github</a><a href="https://t.me/joinchat/IuVfSlYWC5seijz6a0Bjww">Developer Chat</a><a href="https://twitter.com/Binance_DEX" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/docusaurus/blog">Blog</a><a href="https://github.com/binance-chain/node-binary">GitHub</a><a class="github-button" href="https://github.com/binance-chain/node-binary" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 binance.org</section></footer></div></body></html>

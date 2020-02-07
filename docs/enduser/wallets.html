@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Wallets · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="To start, navigate to the Binance Chain &lt;u&gt;[homepage](https://www.binance.org/en)&lt;/u&gt;(or&lt;u&gt;[testnet](https://testnet.binance.org/en/)&lt;/u&gt; if you wish to test using testnet funds) and click on “Create Wallet” in the upper left-hand corner of your screen."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Wallets · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://huangsuyu.github.io/docusaurus/"/><meta property="og:description" content="To start, navigate to the Binance Chain &lt;u&gt;[homepage](https://www.binance.org/en)&lt;/u&gt;(or&lt;u&gt;[testnet](https://testnet.binance.org/en/)&lt;/u&gt; if you wish to test using testnet funds) and click on “Create Wallet” in the upper left-hand corner of your screen."/><meta property="og:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://huangsuyu.github.io/docusaurus/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://huangsuyu.github.io/docusaurus/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://huangsuyu.github.io/docusaurus/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus/css/prism.css"/><link rel="stylesheet" href="/docusaurus/css/main.css"/><script src="/docusaurus/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus/"><img class="logo" src="/docusaurus/img/logo.svg" alt="Developers"/><h2 class="headerTitleWithLogo">Developers</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docusaurus/docs/guides/intro/intro" target="_self">Guides</a></li><li class=""><a href="/docusaurus/docs/api/api" target="_self">API Reference</a></li><li class="siteNavGroupActive"><a href="/docusaurus/docs/enduser/how-to-trade" target="_self">End User</a></li><li class=""><a href="/docusaurus/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/binance-chain/node-binary" target="_self">GitHub</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>End User Guide</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">End User Guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docusaurus/docs/enduser/how-to-trade">How to Trade</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus/docs/enduser/wallets">Wallets</a></li><li class="navListItem"><a class="navItem" href="/docusaurus/docs/enduser/explorer">Binance Chain Explorer</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Wallets</h1></header><article><div><span><p>To start, navigate to the Binance Chain <u><a href="https://www.binance.org/en">homepage</a></u>(or<u><a href="https://testnet.binance.org/en/">testnet</a></u> if you wish to test using testnet funds) and click on “Create Wallet” in the upper left-hand corner of your screen.</p>
+<p>You will be prompted with a tutorial on how to create a wallet directly on the website. Read it carefully!</p>
+<p>As a Binance Chain user, you will hold full custody of your funds. No one, not even Binance will be able to help you recover your wallet if you lose your private key, mnemonic phrase or keystore file.</p>
+<p>Upon creating a wallet, the following will be generated for you. Please store them securely.</p>
+<ul>
+<li><strong>Keystore (encrypted &amp; password protected)</strong></li>
+</ul>
+<p>A keystore file contains your private key along with your public key and address (both of which are derived from your private key). This file is encrypted and password protected. This is the recommended way to access your wallet if you do not have access to a supported hardware device.</p>
+<ul>
+<li><strong>Mnemonic Phrase</strong></li>
+</ul>
+<p>A mnemonic phrase is generated based on a BIP39 word list - this phrase allows you to access your wallet, but should not be used regularly. It is recommended you only use your mnemonic phrase as a backup.</p>
+<ul>
+<li><strong>Private Key</strong></li>
+</ul>
+<p>This allows you to access your wallet, but should not be used regularly. It is recommended you only use your private key as a backup.</p>
+<p>In order to create a keystore file, you will need to assign a password that will be used to access the file. When logging into the Binance DEX, this password will also function as your session password. Note that your password needs to have 8 or more characters; an upper-case letter, symbol and a number.</p>
+<p>Once you have entered your password, click “Download Keystore File”.</p>
+<p><img src="/docusaurus/docs/assets/new1.png" alt="new1"></p>
+<p>In the next step, your mnemonic phrase will be generated. Make sure no one is able to see your screen during this phase.</p>
+<p>Once you’ve proceeded to the next step, you will see your mnemonic phrase and you will be able to view your private key by clicking on “View my Private Key &gt;&gt;” after you have finished writing down your mnemonic phrase.</p>
+<p><img src="/docusaurus/docs/assets/new2.png" alt="new2"></p>
+<p>The recommended methods of accessing your wallet are with a keystore file or a supported hardware device.</p>
+<p>Storage tips for the mnemonic phrase and private key:</p>
+<p>Do not store on an electronic device (computer, phone, etc.).
+Do not print them out. Printers have a memory of what they print.
+Hand-write them on paper.
+Do not put your private key or mnemonic phrase in your wallet.
+Store them in a fireproof and waterproof safe/lockbox.</p>
+<p>Congratulations. You’ve created a wallet on the Binance Chain. You may now use the wallet with the Binance DEX.</p>
+<p><img src="/docusaurus/docs/assets/new3.png" alt="new3"></p>
+<p>To keep your fund safe, please read this guide <u><a href="https://community.binance.org/topic/289/best-practice-to-safely-use-binance-dex">here</a></u>.</p>
+<ul>
+<li>List of Wallets Supporting Binance Chain Mainnet</li>
+<li>[ ] <a href="https://docs.binance.org/get-started.html">https://docs.binance.org/get-started.html</a> (copy wallets section)</li>
+<li>[ ] <a href="https://docs.binance.org/account.html">https://docs.binance.org/account.html</a> (account)</li>
+<li>[ ] <a href="https://docs.binance.org/transfer.html">https://docs.binance.org/transfer.html</a> (transfer)</li>
+</ul>
+<p>::: warning Do your own research and take precautions in regards to wallet security. Neither Binance Chain dev team nor binance.com is liable if you lose your funds using these third party wallets. :::</p>
+<p>These community-maintained web and mobile wallets allow you to store &amp; transfer BNB, issue/manage asset, create on-chain governance proposals. Note that we do not endorse any of the wallets, they are listed for your convenience.</p>
+<h2><a class="anchor" aria-hidden="true" id="for-trading-on-binance-dex"></a><a href="#for-trading-on-binance-dex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For trading on Binance DEX</h2>
+<ul>
+<li><a href="https://trustwallet.com">Trust Wallet</a></li>
+<li><a href="https://trubi.io">Trubi Wallet</a></li>
+<li><a href="https://www.mathwallet.org/en">Math Wallet</a></li>
+<li><a href="https://meet.one">MEET.ONE Wallet</a></li>
+<li><a href="https://equal.tech">Equal Wallet</a></li>
+<li><a href="https://magnumwallet.co">Magnum Wallet</a></li>
+<li><a href="http://coinomi.com">Coinomi Wallet</a></li>
+<li><a href="https://zeltrez.io">ZelCore Wallet</a></li>
+<li><a href="https://zeltrez.io">Infinito Wallet</a></li>
+<li><a href="https://ddex.io">DDEX Wallet</a></li>
+<li><a href="https://www.safepal.io">SafePal Wallet</a>: Hardware Wallet</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="for-asset-management"></a><a href="#for-asset-management" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For asset management</h2>
+<ul>
+<li><a href="https://www.ledger.com">Ledger</a>: Hardware Wallet</li>
+<li><a href="https://coolwallet.io">CoolWallet</a>: Hardware Wallet</li>
+<li><a href="https://atomicwallet.io">Atomic Wallet</a></li>
+<li><a href="https://guarda.co">Guarda Wallet</a></li>
+<li><a href="https://zengo.com">Zengo Wallet</a></li>
+<li><a href="https://hoo.com/">HooWallet</a></li>
+<li><a href="https://cobo.com/">Cobo Wallet</a></li>
+<li><a href="https://www.exodus.io">Exodus</a></li>
+<li><a href="https://www.midasprotocol.io">Midas Wallet</a></li>
+<li><a href="https://arax.io">Arax Wallet</a></li>
+<li><a href="https://pundix.com">Pundi X Wallet</a></li>
+<li><a href="https://www.cosmostation.io">Cosmostation Wallet</a></li>
+<li><a href="https://trezor.io/">Trezor</a></li>
+<li><a href="https://mixin.one">Mixin</a></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/7/2020 by Daniel Onggunhao</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus/docs/enduser/how-to-trade"><span class="arrow-prev">← </span><span>How to Trade</span></a><a class="docs-next button" href="/docusaurus/docs/enduser/explorer"><span>Binance Chain Explorer</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#for-trading-on-binance-dex">For trading on Binance DEX</a></li><li><a href="#for-asset-management">For asset management</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus/" class="nav-home"></a><div><h5>Docs</h5><a href="/docusaurus/docs/en/intro.html">Getting Started</a><a href="/docusaurus/docs/en/api/api.html">API Reference</a><a href="/docusaurus/docs/en/wallets.html">Wallets</a></div><div><h5>Developer Community</h5><a href="https://binancex.dev/">Project Showcase</a><a href="https://github.com/binance-chain" target="_blank" rel="noreferrer noopener">Github</a><a href="https://t.me/joinchat/IuVfSlYWC5seijz6a0Bjww">Developer Chat</a><a href="https://twitter.com/Binance_DEX" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/docusaurus/blog">Blog</a><a href="https://github.com/binance-chain/node-binary">GitHub</a><a class="github-button" href="https://github.com/binance-chain/node-binary" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 binance.org</section></footer></div></body></html>
