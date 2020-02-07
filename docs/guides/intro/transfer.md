@@ -1,20 +1,18 @@
 ---
 id: transfer
-title: Transfer Tokens
+title: Make a Transfer
 ---
 
 Binance Chain is essentially a digital asset creation and exchange platform.
 The features listed below are currently supported on Binance Chain:
 
-* The Issuance, Burning, Minting and Freezing of Tokens
-* Transfer of Tokens
-* The Listing and Delisting of Tokens
+- The Issuance, Burning, Minting and Freezing of Tokens
+- Transfer of Tokens
+- The Listing and Delisting of Tokens
 
 Transfer is the most basic transaction Binance Chain supports, it moves assets among different addresses.
 
 Please note the fees must be paid first in`BNB` before the transaction can be executed.
-
-
 
 ## Create an Address
 
@@ -27,12 +25,12 @@ Because the private key must be kept secret, you can generate the private key wi
 
 ```js
 // generate key entropy
-const privateKey = crypto.generatePrivateKey()
+const privateKey = crypto.generatePrivateKey();
 // get an address
-const address = crypto.getAddressFromPrivateKey(privateKey)
+const address = crypto.getAddressFromPrivateKey(privateKey);
 
-const BnbApiClient = require('@binance-chain/javascript-sdk');
-const axios = require('axios');
+const BnbApiClient = require("@binance-chain/javascript-sdk");
+const axios = require("axios");
 const bnbClient = new BnbApiClient(api);
 const httpClient = axios.create({ baseURL: api });
 bnbClient.chooseNetwork("mainnet"); // or this can be "testnet"
@@ -41,11 +39,12 @@ bnbClient.initChain();
 
 const address = bnbClient.getClientKeyAddress();
 
-console.log('address: ',address)
+console.log("address: ", address);
 ```
-<!--Golang-->
 
-```golang
+<!--Go-->
+
+```Go
 //-----   Init KeyManager  -------------
 km, _ := NewKeyManager()
 //-----   Init sdk  -------------
@@ -55,7 +54,7 @@ accn,_:=client.GetAccount(client.GetKeyManager().GetAddr().String())
 fmt.Println(accn)
 ```
 
-<!--python-->
+<!--Python-->
 
 ```py
 from binance_chain.wallet import Wallet
@@ -76,16 +75,16 @@ For sdk init, you should know the http api URL. Besides, you should know what ki
 <!--JavaScript-->
 
 ```js
-const BnbApiClient = require('@binance-chain/javascript-sdk');
-const axios = require('axios');
+const BnbApiClient = require("@binance-chain/javascript-sdk");
+const axios = require("axios");
 
-const asset = 'BNB'; // asset string
+const asset = "BNB"; // asset string
 const amount = 1.123; // amount float
-const addressTo = 'bnb1jxfh2g85q3v0tdq57fnevx6xcxtcnhtsmcu54m'; // addressTo string
-const message = 'A note to you'; // memo string
-const api = 'https://dex.binance.org/'; /// api string can be "https://testnet-dex.binance.org" for testnet
+const addressTo = "bnb1jxfh2g85q3v0tdq57fnevx6xcxtcnhtsmcu54m"; // addressTo string
+const message = "A note to you"; // memo string
+const api = "https://dex.binance.org/"; /// api string can be "https://testnet-dex.binance.org" for testnet
 
-let privKey = 'DEADBEEF'; // privkey hexstring (keep this safe)
+let privKey = "DEADBEEF"; // privkey hexstring (keep this safe)
 
 const bnbClient = new BnbApiClient(api);
 const httpClient = axios.create({ baseURL: api });
@@ -99,25 +98,33 @@ const sequenceURL = `${api}api/v1/account/${addressFrom}/sequence`;
 
 httpClient
   .get(sequenceURL)
-  .then((res) => {
-      const sequence = res.data.sequence || 0
-      return bnbClient.transfer(addressFrom, addressTo, amount, asset, message, sequence)
+  .then(res => {
+    const sequence = res.data.sequence || 0;
+    return bnbClient.transfer(
+      addressFrom,
+      addressTo,
+      amount,
+      asset,
+      message,
+      sequence
+    );
   })
-  .then((result) => {
-      console.log(result);
-      if (result.status === 200) {
-        console.log('success', result.result[0].hash);
-      } else {
-        console.error('error', result);
-      }
+  .then(result => {
+    console.log(result);
+    if (result.status === 200) {
+      console.log("success", result.result[0].hash);
+    } else {
+      console.error("error", result);
+    }
   })
-  .catch((error) => {
-    console.error('error', error);
+  .catch(error => {
+    console.error("error", error);
   });
 ```
-<!--Golang-->
 
-```golang
+<!--Go-->
+
+```Go
 //-----   Init KeyManager  -------------
 keyManager1, _ := NewKeyManager()
 //-----   Init sdk  -------------
@@ -132,7 +139,7 @@ fmt.Printf("Send token: %v\n", send)
 
 ```
 
-<!--python-->
+<!--Python-->
 
 ```py
 from binance_chain.http import HttpApiClient
@@ -153,5 +160,3 @@ res = client.broadcast_msg(transfer_msg, sync=True)
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
-
-

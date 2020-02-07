@@ -1,18 +1,21 @@
 ---
-id: Accounts
+id: accounts
 title: Accounts
 ---
 
+- [ ] https://docs.binance.org/account.html
+- [ ] https://docs.binance.org/chain-access.html#account-and-sequence-number
 
 Whenever a new address receives an asset, the corresponding transaction would create an Account for that address, which contains balances across all assets that are owned on this address.
 
 The balance (the amount of tokens) of each asset is composed of 3 different parts:
 
-* Available: the amount of tokens that can be transferred, and spent to swap (buy) other assets
-* Locked: the amount of tokens that has been used in any outstanding orders. Once the order terminates (either filled, canceled or expired), the locked amount will decrease.
-* Frozen: the amount of tokens that has been frozen via Freeze transactions.
+- Available: the amount of tokens that can be transferred, and spent to swap (buy) other assets
+- Locked: the amount of tokens that has been used in any outstanding orders. Once the order terminates (either filled, canceled or expired), the locked amount will decrease.
+- Frozen: the amount of tokens that has been frozen via Freeze transactions.
 
 You can query the account info with the following command on mainnet:
+
 ```
 ./bnbcli account <your-address> --chain-id Binance-Chain-Tigris --node https://dataseed5.defibit.io:443 --indent --trust-node
 ```

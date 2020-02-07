@@ -1,9 +1,11 @@
 ---
 id: rpc
-title: Node RPC
+title: Connecting to RPC
 sidebar_label: RPC Reference
 ---
 
+- [ ] Should we combine CLI, HTTP, Websocket APIs into just one on Node RPC?
+- [ ] We can show different tabs for how to connect for each method (e.g. CLI, HTTP, Websocket)
 
 RPC endpoints may be used to interact with a node directly over HTTP or websockets. Using RPC, you may perform low-level operations like executing ABCI queries, viewing network/consensus state or broadcasting a transaction.
 
@@ -85,7 +87,7 @@ See it here: <a href="https://github.com/tendermint/tendermint/tree/master/rpc/l
 
 RPC can be configured by tuning parameters under `[rpc]` table in the `$TMHOME/config/config.toml` file or by using the `--rpc.X` command-line flags.
 
-Default rpc listen address is `tcp://0.0.0.0:27147`. To set another address,  set the `laddr` config parameter to desired value.
+Default rpc listen address is `tcp://0.0.0.0:27147`. To set another address, set the `laddr` config parameter to desired value.
 CORS (Cross-Origin Resource Sharing) can be enabled by setting `cors_allowed_origins`, `cors_allowed_methods`, `cors_allowed_headers` config parameters.
 
 ## 4. Arguments
@@ -110,14 +112,14 @@ curl 'localhost:27147/broadcast_tx_sync?tx=0xdb01f0625dee0a63ce6dc0430a14813e493
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": "",
-	"result": {
-		"code": 0,
-		"data": "7B226F726465725F6964223A22383133453439333946313536374232313937303446464332414434444635384244453031303837392D3433227D",
-		"log": "Msg 0: ",
-		"hash": "AB1B84C7C0B0B195941DCE9CFE1A54214B72D5DB54AD388D8B146A6B62911E8E"
-	}
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "code": 0,
+    "data": "7B226F726465725F6964223A22383133453439333946313536374232313937303446464332414434444635384244453031303837392D3433227D",
+    "log": "Msg 0: ",
+    "hash": "AB1B84C7C0B0B195941DCE9CFE1A54214B72D5DB54AD388D8B146A6B62911E8E"
+  }
 }
 ```
 
@@ -129,16 +131,14 @@ JSONRPC requests can be POST'd to the root RPC endpoint via HTTP (e.g. <a href="
 {
   "method": "broadcast_tx_sync",
   "jsonrpc": "2.0",
-  "params": [
-    "abc"
-  ],
+  "params": ["abc"],
   "id": "dontcare"
 }
 ```
 
 ### 4.3 JSONRPC/websockets
 
-JSONRPC requests can be made via websocket. The websocket endpoint is at `/websocket`, e.g. `localhost:27147/websocket`.  Asynchronous RPC functions like event `subscribe` and `unsubscribe` are only available via websockets.
+JSONRPC requests can be made via websocket. The websocket endpoint is at `/websocket`, e.g. `localhost:27147/websocket`. Asynchronous RPC functions like event `subscribe` and `unsubscribe` are only available via websockets.
 
 ## 5. RPC Endpoint List
 
@@ -186,12 +186,9 @@ curl 'localhost:27147'
 /validators?height=_
 ```
 
-
-
 ## 6. APIs
 
 ### 6.1 Query APIs
-
 
 #### 6.1.1 Query ABCIInfo
 
@@ -228,22 +225,21 @@ The above command returns JSON structured like this:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "id": "",
-    "result": {
-        "response": {
-            "data": "BNBChain",
-            "last_block_height": "7579978",
-            "last_block_app_hash": "92HKpxrNKqYkzSRj49FI+PjzVx7oirnYrwhMzG0CRDg="
-        }
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "response": {
+      "data": "BNBChain",
+      "last_block_height": "7579978",
+      "last_block_app_hash": "92HKpxrNKqYkzSRj49FI+PjzVx7oirnYrwhMzG0CRDg="
     }
+  }
 }
 ```
 
 #### 6.1.2 Query ConsensusState
 
 ConsensusState returns a concise summary of the consensus state. This is just a snapshot of consensus state, and it will not persist.
-
 
 **Return Parameters**
 return round states
@@ -277,32 +273,29 @@ The above command returns JSON structured like this:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": "",
-	"result": {
-	  "round_state": {
-	    "height/round/step": "9336/0/1",
-	    "start_time": "2018-05-14T10:25:45.72595357-04:00",
-	    "proposal_block_hash": "",
-	    "locked_block_hash": "",
-	    "valid_block_hash": "",
-	    "height_vote_set": [
-	      {
-	        "round": "0",
-	        "prevotes": [
-	          "nil-Vote"
-	        ],
-	        "prevotes_bit_array": "BA{1:_} 0/10 = 0.00",
-	        "precommits": [
-	          "nil-Vote"
-	        ],
-	        "precommits_bit_array": "BA{1:_} 0/10 = 0.00"
-	      }
-	    ]
-	  }
-	}
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "round_state": {
+      "height/round/step": "9336/0/1",
+      "start_time": "2018-05-14T10:25:45.72595357-04:00",
+      "proposal_block_hash": "",
+      "locked_block_hash": "",
+      "valid_block_hash": "",
+      "height_vote_set": [
+        {
+          "round": "0",
+          "prevotes": ["nil-Vote"],
+          "prevotes_bit_array": "BA{1:_} 0/10 = 0.00",
+          "precommits": ["nil-Vote"],
+          "precommits_bit_array": "BA{1:_} 0/10 = 0.00"
+        }
+      ]
+    }
+  }
 }
 ```
+
 #### 6.1.3 Query DumpConsensusState
 
 DumpConsensusState dumps consensus state. This is just a snapshot of consensus state, and it will not persist.
@@ -339,119 +332,118 @@ The above command returns JSON structured like this:
 
 ```json
 {
-	"jsonrpc": "2.0",
-	"id": "",
-	"result": {
-	  "round_state": {
-	    "height": "7185",
-	    "round": "0",
-	    "step": "1",
-	    "start_time": "2018-05-12T13:57:28.440293621-07:00",
-	    "commit_time": "2018-05-12T13:57:27.440293621-07:00",
-	    "validators": {
-	      "validators": [
-	        {
-	          "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
-	          "pub_key": {
-	            "type": "tendermint/PubKeyEd25519",
-	            "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
-	          },
-	          "voting_power": "10",
-	          "proposer_priority": "0"
-	        }
-	      ],
-	      "proposer": {
-	        "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
-	        "pub_key": {
-	          "type": "tendermint/PubKeyEd25519",
-	          "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
-	        },
-	        "voting_power": "10",
-	        "proposer_priority": "0"
-	      }
-	    },
-	    "proposal": null,
-	    "proposal_block": null,
-	    "proposal_block_parts": null,
-	    "locked_round": "0",
-	    "locked_block": null,
-	    "locked_block_parts": null,
-	    "valid_round": "0",
-	    "valid_block": null,
-	    "valid_block_parts": null,
-	    "votes": [
-	      {
-	        "round": "0",
-	        "prevotes": "_",
-	        "precommits": "_"
-	      }
-	    ],
-	    "commit_round": "-1",
-	    "last_commit": {
-	      "votes": [
-	        "Vote{0:B5B3D40BE539 7184/00/2(Precommit) 14F946FA7EF0 /702B1B1A602A.../ @ 2018-05-12T20:57:27.342Z}"
-	      ],
-	      "votes_bit_array": "x",
-	      "peer_maj_23s": {}
-	    },
-	    "last_validators": {
-	      "validators": [
-	        {
-	          "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
-	          "pub_key": {
-	            "type": "tendermint/PubKeyEd25519",
-	            "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
-	          },
-	          "voting_power": "10",
-	          "proposer_priority": "0"
-	        }
-	      ],
-	      "proposer": {
-	        "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
-	        "pub_key": {
-	          "type": "tendermint/PubKeyEd25519",
-	          "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
-	        },
-	        "voting_power": "10",
-	        "proposer_priority": "0"
-	      }
-	    }
-	  },
-	  "peers": [
-	    {
-	      "node_address": "30ad1854af22506383c3f0e57fb3c7f90984c5e8@172.16.63.221:27146",
-	      "peer_state": {
-	        "round_state": {
-	          "height": "7185",
-	          "round": "0",
-	          "step": "1",
-	          "start_time": "2018-05-12T13:57:27.438039872-07:00",
-	          "proposal": false,
-	          "proposal_block_parts_header": {
-	            "total": "0",
-	            "hash": ""
-	          },
-	          "proposal_block_parts": null,
-	          "proposal_pol_round": "-1",
-	          "proposal_pol": "_",
-	          "prevotes": "_",
-	          "precommits": "_",
-	          "last_commit_round": "0",
-	          "last_commit": "x",
-	          "catchup_commit_round": "-1",
-	          "catchup_commit": "_"
-	        },
-	        "stats": {
-	          "last_vote_height": "7184",
-	          "votes": "255",
-	          "last_block_part_height": "7184",
-	          "block_parts": "255"
-	        }
-	      }
-	    }
-	  ]
-	}
-
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "round_state": {
+      "height": "7185",
+      "round": "0",
+      "step": "1",
+      "start_time": "2018-05-12T13:57:28.440293621-07:00",
+      "commit_time": "2018-05-12T13:57:27.440293621-07:00",
+      "validators": {
+        "validators": [
+          {
+            "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
+            "pub_key": {
+              "type": "tendermint/PubKeyEd25519",
+              "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
+            },
+            "voting_power": "10",
+            "proposer_priority": "0"
+          }
+        ],
+        "proposer": {
+          "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
+          "pub_key": {
+            "type": "tendermint/PubKeyEd25519",
+            "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
+          },
+          "voting_power": "10",
+          "proposer_priority": "0"
+        }
+      },
+      "proposal": null,
+      "proposal_block": null,
+      "proposal_block_parts": null,
+      "locked_round": "0",
+      "locked_block": null,
+      "locked_block_parts": null,
+      "valid_round": "0",
+      "valid_block": null,
+      "valid_block_parts": null,
+      "votes": [
+        {
+          "round": "0",
+          "prevotes": "_",
+          "precommits": "_"
+        }
+      ],
+      "commit_round": "-1",
+      "last_commit": {
+        "votes": [
+          "Vote{0:B5B3D40BE539 7184/00/2(Precommit) 14F946FA7EF0 /702B1B1A602A.../ @ 2018-05-12T20:57:27.342Z}"
+        ],
+        "votes_bit_array": "x",
+        "peer_maj_23s": {}
+      },
+      "last_validators": {
+        "validators": [
+          {
+            "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
+            "pub_key": {
+              "type": "tendermint/PubKeyEd25519",
+              "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
+            },
+            "voting_power": "10",
+            "proposer_priority": "0"
+          }
+        ],
+        "proposer": {
+          "address": "B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244",
+          "pub_key": {
+            "type": "tendermint/PubKeyEd25519",
+            "value": "SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="
+          },
+          "voting_power": "10",
+          "proposer_priority": "0"
+        }
+      }
+    },
+    "peers": [
+      {
+        "node_address": "30ad1854af22506383c3f0e57fb3c7f90984c5e8@172.16.63.221:27146",
+        "peer_state": {
+          "round_state": {
+            "height": "7185",
+            "round": "0",
+            "step": "1",
+            "start_time": "2018-05-12T13:57:27.438039872-07:00",
+            "proposal": false,
+            "proposal_block_parts_header": {
+              "total": "0",
+              "hash": ""
+            },
+            "proposal_block_parts": null,
+            "proposal_pol_round": "-1",
+            "proposal_pol": "_",
+            "prevotes": "_",
+            "precommits": "_",
+            "last_commit_round": "0",
+            "last_commit": "x",
+            "catchup_commit_round": "-1",
+            "catchup_commit": "_"
+          },
+          "stats": {
+            "last_vote_height": "7184",
+            "votes": "255",
+            "last_block_part_height": "7184",
+            "block_parts": "255"
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -681,9 +673,7 @@ The above command returns JSON structured like this:
           "max_age": "100000"
         },
         "validator": {
-          "pub_key_types": [
-            "ed25519"
-          ]
+          "pub_key_types": ["ed25519"]
         }
       },
       "app_hash": "",
@@ -1515,10 +1505,10 @@ The above command returns JSON structured like this:
 
 ```json
 {
-	"error": "",
-	"result": {},
-	"id": "",
-	"jsonrpc": "2.0"
+  "error": "",
+  "result": {},
+  "id": "",
+  "jsonrpc": "2.0"
 }
 ```
 
@@ -1564,13 +1554,13 @@ The above command returns JSON structured like this:
 
 ```json
 {
-	"error": "",
-	"result": {
-	  "txs": null,
-	  "n_txs": "0"
-	},
-	"id": "",
-	"jsonrpc": "2.0"
+  "error": "",
+  "result": {
+    "txs": null,
+    "n_txs": "0"
+  },
+  "id": "",
+  "jsonrpc": "2.0"
 }
 ```
 
@@ -1651,32 +1641,31 @@ The above command returns JSON structured like this:
 }
 ```
 
-
-
 #### 6.1.9 ABCIQuery
+
 Query the application for some information.
 
 **Query Parameters**
 
-| Parameter | Type   | Default | Required | Description                                    |
-|-----------|--------|---------|----------|------------------------------------------------|
-| path      | string | false   | false    | Path to the data ("/a/b/c")                    |
-| data      | []byte | false   | true     | Data                                           |
-| height    | int64  | 0       | false    | Height (0 means latest)                        |
-| prove     | bool   | false   | false    | Includes proof if true                         |
+| Parameter | Type   | Default | Required | Description                 |
+| --------- | ------ | ------- | -------- | --------------------------- |
+| path      | string | false   | false    | Path to the data ("/a/b/c") |
+| data      | []byte | false   | true     | Data                        |
+| height    | int64  | 0       | false    | Height (0 means latest)     |
+| prove     | bool   | false   | false    | Includes proof if true      |
 
 **Available Query Path**
 
-* `/store/acc/key`
-*  `/tokens/info`
-*  `/tokens/list`
-*  `/dex/pairs`
-*  `/dex/orderbook`
-*  `/param/fees`
-*  `/account/`
-*  `/dex/openorders`
-*  `/custom/gov/proposals`
-*  `/custom/gov/proposal`
+- `/store/acc/key`
+- `/tokens/info`
+- `/tokens/list`
+- `/dex/pairs`
+- `/dex/orderbook`
+- `/param/fees`
+- `/account/`
+- `/dex/openorders`
+- `/custom/gov/proposals`
+- `/custom/gov/proposal`
 
 **Return Type**
 
@@ -1693,16 +1682,19 @@ type ResponseQuery struct {
 	Codespace            string
 }
 ```
+
 **Example**
 
 In this example, we will explain how to query account info with `abci_query`.
-1. Generate query key
-    To get the correct key you need to ：
-    The query key is : "account:" || address in hex. The first part is in ASCII.
 
-  “account:” in ASCII is 6163636F756E756E and the address derived from public key is 743A89F856CB39D25C1BDDAAEC74A381577CA8E2F886. You need to add these to part to get the correct key.
+1. Generate query key
+   To get the correct key you need to ：
+   The query key is : "account:" || address in hex. The first part is in ASCII.
+
+“account:” in ASCII is 6163636F756E756E and the address derived from public key is 743A89F856CB39D25C1BDDAAEC74A381577CA8E2F886. You need to add these to part to get the correct key.
 
 2. Run query
+
 ```shell
 curl 'https://data-seed-pre-0-s3.binance.org/abci_query?path="/store/acc/key"&data=0x6163636F756E743A89F856CB39D25C1BDDAAEC74A381577CA8E2F886'
 ```
@@ -1736,13 +1728,84 @@ The above command returns JSON structured like this:
 ```
 
 The account balance information is the following:
+
 ```json
-{"type":"bnbchain/Account","value":{"base":{"address":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","coins":[{"denom":"000-0E1","amount":"10530"},{"denom":"AGRI-BD2","amount":"102842693026"},{"denom":"ALIS-95B","amount":"1008261"},{"denom":"ANN-457","amount":"10100000000000"},{"denom":"AVT-B74","amount":"2280343"},{"denom":"BC1-3A1","amount":"1826704"},{"denom":"BNB","amount":"10221947267999"},{"denom":"BNN-411","amount":"10100000000000"},{"denom":"BTC.B-918","amount":"113218800"},{"denom":"BTMGL-C72","amount":"204562981873"},{"denom":"CNN-210","amount":"10100000000000"},{"denom":"COSMOS-587","amount":"50000101983748977"},{"denom":"DC1-4B8","amount":"1826704"},{"denom":"DUIT-31C","amount":"121112394964"},{"denom":"EDU-DD0","amount":"139885964"},{"denom":"FRI-D5F","amount":"11251373129"},{"denom":"IAA-C81","amount":"9448420"},{"denom":"IBB-8DE","amount":"9448420"},{"denom":"ICC-6EF","amount":"9448420"},{"denom":"IDD-516","amount":"9448420"},{"denom":"IEE-DCA","amount":"9448420"},{"denom":"IFF-804","amount":"9448420"},{"denom":"IGG-013","amount":"9448420"},{"denom":"IHH-D4E","amount":"9448420"},{"denom":"III-25C","amount":"9448420"},{"denom":"IJJ-65E","amount":"9448420"},{"denom":"KOGE48-35D","amount":"10000000000"},{"denom":"LC1-7FC","amount":"1826704"},{"denom":"LCQ-AC5","amount":"9133568718"},{"denom":"MFH-9B5","amount":"1258976083286"},{"denom":"NASC-137","amount":"0"},{"denom":"NC1-279","amount":"1826704"},{"denom":"NC2-249","amount":"1411566"},{"denom":"OCB-B95","amount":"10000000000"},{"denom":"PIC-F40","amount":"102842693026"},{"denom":"PPC-00A","amount":"205150260"},{"denom":"RBT-CB7","amount":"1008261"},{"denom":"RC1-943","amount":"1826704"},{"denom":"RC1-A1E","amount":"1826704"},{"denom":"RC1-F49","amount":"1826704"},{"denom":"SVC-A14","amount":"18267042"},{"denom":"TC1-F43","amount":"1826704"},{"denom":"TFA-3B4","amount":"5731324"},{"denom":"TGT-9FC","amount":"33251102828"},{"denom":"UCX-CC8","amount":"1398859649"},{"denom":"UDO-638","amount":"5041308481"},{"denom":"USDT.B-B7C","amount":"138793116268"},{"denom":"WWW76-A8F","amount":"4611856"},{"denom":"XSX-072","amount":"10228149"},{"denom":"YLC-D8B","amount":"210572645"},{"denom":"ZEBRA-16D","amount":"1000"},{"denom":"ZZZ-21E","amount":"13988596"}],"public_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"account_number":"406226","sequence":"52"},"name":"","frozen":null,"locked":[{"denom":"BNB","amount":"800"}]}}
+{
+  "type": "bnbchain/Account",
+  "value": {
+    "base": {
+      "address": "tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5",
+      "coins": [
+        { "denom": "000-0E1", "amount": "10530" },
+        { "denom": "AGRI-BD2", "amount": "102842693026" },
+        { "denom": "ALIS-95B", "amount": "1008261" },
+        { "denom": "ANN-457", "amount": "10100000000000" },
+        { "denom": "AVT-B74", "amount": "2280343" },
+        { "denom": "BC1-3A1", "amount": "1826704" },
+        { "denom": "BNB", "amount": "10221947267999" },
+        { "denom": "BNN-411", "amount": "10100000000000" },
+        { "denom": "BTC.B-918", "amount": "113218800" },
+        { "denom": "BTMGL-C72", "amount": "204562981873" },
+        { "denom": "CNN-210", "amount": "10100000000000" },
+        { "denom": "COSMOS-587", "amount": "50000101983748977" },
+        { "denom": "DC1-4B8", "amount": "1826704" },
+        { "denom": "DUIT-31C", "amount": "121112394964" },
+        { "denom": "EDU-DD0", "amount": "139885964" },
+        { "denom": "FRI-D5F", "amount": "11251373129" },
+        { "denom": "IAA-C81", "amount": "9448420" },
+        { "denom": "IBB-8DE", "amount": "9448420" },
+        { "denom": "ICC-6EF", "amount": "9448420" },
+        { "denom": "IDD-516", "amount": "9448420" },
+        { "denom": "IEE-DCA", "amount": "9448420" },
+        { "denom": "IFF-804", "amount": "9448420" },
+        { "denom": "IGG-013", "amount": "9448420" },
+        { "denom": "IHH-D4E", "amount": "9448420" },
+        { "denom": "III-25C", "amount": "9448420" },
+        { "denom": "IJJ-65E", "amount": "9448420" },
+        { "denom": "KOGE48-35D", "amount": "10000000000" },
+        { "denom": "LC1-7FC", "amount": "1826704" },
+        { "denom": "LCQ-AC5", "amount": "9133568718" },
+        { "denom": "MFH-9B5", "amount": "1258976083286" },
+        { "denom": "NASC-137", "amount": "0" },
+        { "denom": "NC1-279", "amount": "1826704" },
+        { "denom": "NC2-249", "amount": "1411566" },
+        { "denom": "OCB-B95", "amount": "10000000000" },
+        { "denom": "PIC-F40", "amount": "102842693026" },
+        { "denom": "PPC-00A", "amount": "205150260" },
+        { "denom": "RBT-CB7", "amount": "1008261" },
+        { "denom": "RC1-943", "amount": "1826704" },
+        { "denom": "RC1-A1E", "amount": "1826704" },
+        { "denom": "RC1-F49", "amount": "1826704" },
+        { "denom": "SVC-A14", "amount": "18267042" },
+        { "denom": "TC1-F43", "amount": "1826704" },
+        { "denom": "TFA-3B4", "amount": "5731324" },
+        { "denom": "TGT-9FC", "amount": "33251102828" },
+        { "denom": "UCX-CC8", "amount": "1398859649" },
+        { "denom": "UDO-638", "amount": "5041308481" },
+        { "denom": "USDT.B-B7C", "amount": "138793116268" },
+        { "denom": "WWW76-A8F", "amount": "4611856" },
+        { "denom": "XSX-072", "amount": "10228149" },
+        { "denom": "YLC-D8B", "amount": "210572645" },
+        { "denom": "ZEBRA-16D", "amount": "1000" },
+        { "denom": "ZZZ-21E", "amount": "13988596" }
+      ],
+      "public_key": {
+        "type": "tendermint/PubKeySecp256k1",
+        "value": "AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"
+      },
+      "account_number": "406226",
+      "sequence": "52"
+    },
+    "name": "",
+    "frozen": null,
+    "locked": [{ "denom": "BNB", "amount": "800" }]
+  }
+}
 ```
 
 You can also query from `/account/`. This is how [go-sdk](https://github.com/binance-chain/go-sdk/blob/master/client/rpc/dex_client.go#L144) handles balance query, because it relects account changes which are not committed in a block too.
 
-```shell
+````shell
 curl 'https://data-seed-pre-0-s3.binance.org/abci_query?path="/account/tbnb1hn8ym9xht925jkncjpf7lhjnax6z8nv2mu9wy3"'
 
 ```go
@@ -1755,7 +1818,7 @@ if err != nil {
 }
 defer client.Stop()
 account, err := client.GetAccount("Your address")
-```
+````
 
 The above command returns JSON structured like this:
 
@@ -1770,15 +1833,16 @@ The above command returns JSON structured like this:
   }
 ```
 
-#### 6.1.10  Query Block
+#### 6.1.10 Query Block
+
 Get block at a given height.
 If no height is provided, it will fetch the latest block.
 
 **Query Parameters**
 
-| Parameter | Type   | Default | Required | Description                                    |
-|-----------|--------|---------|----------|------------------------------------------------|
-| height      | int64 | false   | false    | height of blockchain|
+| Parameter | Type  | Default | Required | Description          |
+| --------- | ----- | ------- | -------- | -------------------- |
+| height    | int64 | false   | false    | height of blockchain |
 
 **Return Type:**
 
@@ -1824,52 +1888,54 @@ The above command returns JSON structured like this:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "id": "",
-    "result": {
-        "last_height": "7570471",
-        "block_metas": [
-            {
-                "block_id": {
-                    "hash": "5701A12896315A121303A979ACB707ACC447E20EFACFCB26174E9ED3997E2F5C",
-                    "parts": {
-                        "total": "1",
-                        "hash": "8C63BE3E3A221B984219CFAA1C196DDF0F202D68293311BFA9EE0B7A9155EACD"
-                    }
-                },
-                "header": {
-                    "version": {
-                        "block": "10",
-                        "app": "0"
-                    },
-                    "chain_id": "Binance-Chain-Nile",
-                    "height": "10",
-                    "time": "2019-03-07T01:57:22.135103158Z",
-                    "num_txs": "0",
-                    "total_txs": "0",
-                    "last_block_id": {
-                        "hash": "1AF674F804E277354E8742176ECA74E338F52C237E6DBFF92819D75037E4F651",
-                        "parts": {
-                            "total": "1",
-                            "hash": "BB3C36D5BBDAB441A7339385C071C4E804C4C3DD5C7BC15D60BC658A6B261906"
-                        }
-                    },
-                    "last_commit_hash": "5442553C06521016756796015AF78FCAC752FFA9E94ACAF4DAA5DF4113B4B354",
-                    "data_hash": "",
-                    "validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
-                    "next_validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
-                    "consensus_hash": "294D8FBD0B94B767A7EBA9840F299A3586DA7FE6B5DEAD3B7EECBA193C400F93",
-                    "app_hash": "E7D96927FD82FD910624AA8034B8A527FCEB1F7AB353DE789A3ECA8D400BDE31",
-                    "last_results_hash": "",
-                    "evidence_hash": "",
-                    "proposer_address": "E0DD72609CC106210D1AA13936CB67B93A0AEE21"
-                }
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "last_height": "7570471",
+    "block_metas": [
+      {
+        "block_id": {
+          "hash": "5701A12896315A121303A979ACB707ACC447E20EFACFCB26174E9ED3997E2F5C",
+          "parts": {
+            "total": "1",
+            "hash": "8C63BE3E3A221B984219CFAA1C196DDF0F202D68293311BFA9EE0B7A9155EACD"
+          }
+        },
+        "header": {
+          "version": {
+            "block": "10",
+            "app": "0"
+          },
+          "chain_id": "Binance-Chain-Nile",
+          "height": "10",
+          "time": "2019-03-07T01:57:22.135103158Z",
+          "num_txs": "0",
+          "total_txs": "0",
+          "last_block_id": {
+            "hash": "1AF674F804E277354E8742176ECA74E338F52C237E6DBFF92819D75037E4F651",
+            "parts": {
+              "total": "1",
+              "hash": "BB3C36D5BBDAB441A7339385C071C4E804C4C3DD5C7BC15D60BC658A6B261906"
             }
-        ]
-    }
+          },
+          "last_commit_hash": "5442553C06521016756796015AF78FCAC752FFA9E94ACAF4DAA5DF4113B4B354",
+          "data_hash": "",
+          "validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
+          "next_validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
+          "consensus_hash": "294D8FBD0B94B767A7EBA9840F299A3586DA7FE6B5DEAD3B7EECBA193C400F93",
+          "app_hash": "E7D96927FD82FD910624AA8034B8A527FCEB1F7AB353DE789A3ECA8D400BDE31",
+          "last_results_hash": "",
+          "evidence_hash": "",
+          "proposer_address": "E0DD72609CC106210D1AA13936CB67B93A0AEE21"
+        }
+      }
+    ]
+  }
 }
 ```
+
 #### 6.1.11 Query BlockResults
+
 BlockResults gets ABCIResults at a given height.
 If no height is provided, it will fetch results for the latest block.
 Results are for the height of the block containing the txs.
@@ -1877,9 +1943,9 @@ Thus response.results[5] is the results of executing getBlock(h).Txs[5]
 
 **Query Parameters**
 
-| Parameter | Type   | Default | Required | Description                                    |
-|-----------|--------|---------|----------|------------------------------------------------|
-| height      | int64 | false   | false    | height of blockchain|
+| Parameter | Type  | Default | Required | Description          |
+| --------- | ----- | ------- | -------- | -------------------- |
+| height    | int64 | false   | false    | height of blockchain |
 
 **Return Type:**
 
@@ -1912,52 +1978,55 @@ The above command returns JSON structured like this:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "id": "",
-    "result": {
-        "height": "7570163",
-        "results": {
-            "DeliverTx": [
-                {
-                    "data": "eyJvcmRlcl9pZCI6IkI3ODFFNURDREU1NUNGRjY2NkM5QTNGNjMwREZFQUE0RkE5NDBDQkEtMjMzMSJ9",
-                    "log": "Msg 0: ",
-                    "tags": [
-                        {
-                            "key": "YWN0aW9u",
-                            "value": "b3JkZXJOZXc="
-                        }
-                    ]
-                }
-            ],
-            "EndBlock": {
-                "validator_updates": null
-            },
-            "BeginBlock": { }
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "height": "7570163",
+    "results": {
+      "DeliverTx": [
+        {
+          "data": "eyJvcmRlcl9pZCI6IkI3ODFFNURDREU1NUNGRjY2NkM5QTNGNjMwREZFQUE0RkE5NDBDQkEtMjMzMSJ9",
+          "log": "Msg 0: ",
+          "tags": [
+            {
+              "key": "YWN0aW9u",
+              "value": "b3JkZXJOZXc="
+            }
+          ]
         }
+      ],
+      "EndBlock": {
+        "validator_updates": null
+      },
+      "BeginBlock": {}
     }
+  }
 }
 ```
 
 #### 6.1.12 Query BlockchainInfo
+
 Get block headers for minHeight <= height <= maxHeight.
 Block headers are returned in descending order (highest first).
 
 **Query Parameters**
 
-| Parameter | Type   | Default | Required | Description                                    |
-|-----------|--------|---------|----------|------------------------------------------------|
-| minHeight      | int64 | false   | true    | height of blockchain|
-| maxHeight      | int64 | false   | true    | height of blockchain|
+| Parameter | Type  | Default | Required | Description          |
+| --------- | ----- | ------- | -------- | -------------------- |
+| minHeight | int64 | false   | true     | height of blockchain |
+| maxHeight | int64 | false   | true     | height of blockchain |
 
 **Return Type:**
 
 List of blocks
+
 ```
 type ResultBlockchainInfo struct {
 	LastHeight int64
 	BlockMetas []*types.BlockMeta
 }
 ```
+
 **Example**
 
 ```shell
@@ -1980,61 +2049,62 @@ The above command returns JSON structured like this:
 
 ```json
 {
-   "jsonrpc": "2.0",
-   "id": "",
-   "result": {
-      "last_height": "7570471",
-      "block_metas": [
-         {
-            "block_id": {
-               "hash": "5701A12896315A121303A979ACB707ACC447E20EFACFCB26174E9ED3997E2F5C",
-               "parts": {
-                  "total": "1",
-                  "hash": "8C63BE3E3A221B984219CFAA1C196DDF0F202D68293311BFA9EE0B7A9155EACD"
-               }
-            },
-            "header": {
-               "version": {
-                  "block": "10",
-                  "app": "0"
-               },
-               "chain_id": "Binance-Chain-Nile",
-               "height": "10",
-               "time": "2019-03-07T01:57:22.135103158Z",
-               "num_txs": "0",
-               "total_txs": "0",
-               "last_block_id": {
-                  "hash": "1AF674F804E277354E8742176ECA74E338F52C237E6DBFF92819D75037E4F651",
-                  "parts": {
-                     "total": "1",
-                     "hash": "BB3C36D5BBDAB441A7339385C071C4E804C4C3DD5C7BC15D60BC658A6B261906"
-                  }
-               },
-               "last_commit_hash": "5442553C06521016756796015AF78FCAC752FFA9E94ACAF4DAA5DF4113B4B354",
-               "data_hash": "",
-               "validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
-               "next_validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
-               "consensus_hash": "294D8FBD0B94B767A7EBA9840F299A3586DA7FE6B5DEAD3B7EECBA193C400F93",
-               "app_hash": "E7D96927FD82FD910624AA8034B8A527FCEB1F7AB353DE789A3ECA8D400BDE31",
-               "last_results_hash": "",
-               "evidence_hash": "",
-               "proposer_address": "E0DD72609CC106210D1AA13936CB67B93A0AEE21"
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "last_height": "7570471",
+    "block_metas": [
+      {
+        "block_id": {
+          "hash": "5701A12896315A121303A979ACB707ACC447E20EFACFCB26174E9ED3997E2F5C",
+          "parts": {
+            "total": "1",
+            "hash": "8C63BE3E3A221B984219CFAA1C196DDF0F202D68293311BFA9EE0B7A9155EACD"
+          }
+        },
+        "header": {
+          "version": {
+            "block": "10",
+            "app": "0"
+          },
+          "chain_id": "Binance-Chain-Nile",
+          "height": "10",
+          "time": "2019-03-07T01:57:22.135103158Z",
+          "num_txs": "0",
+          "total_txs": "0",
+          "last_block_id": {
+            "hash": "1AF674F804E277354E8742176ECA74E338F52C237E6DBFF92819D75037E4F651",
+            "parts": {
+              "total": "1",
+              "hash": "BB3C36D5BBDAB441A7339385C071C4E804C4C3DD5C7BC15D60BC658A6B261906"
             }
-         }
-      ]
-   }
+          },
+          "last_commit_hash": "5442553C06521016756796015AF78FCAC752FFA9E94ACAF4DAA5DF4113B4B354",
+          "data_hash": "",
+          "validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
+          "next_validators_hash": "80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A",
+          "consensus_hash": "294D8FBD0B94B767A7EBA9840F299A3586DA7FE6B5DEAD3B7EECBA193C400F93",
+          "app_hash": "E7D96927FD82FD910624AA8034B8A527FCEB1F7AB353DE789A3ECA8D400BDE31",
+          "last_results_hash": "",
+          "evidence_hash": "",
+          "proposer_address": "E0DD72609CC106210D1AA13936CB67B93A0AEE21"
+        }
+      }
+    ]
+  }
 }
 ```
+
 #### 6.1.13 Query Commit
+
 Get block commit at a given height.
 If no height is provided, it will fetch the commit for the latest block.
 
 **Transaction Parameters**
 
-| Parameter | Type | Default | Required | Description     |
-|-----------|------|---------|----------|-----------------|
-| Height      | int64 | false   | true    | height of blockchain|
-
+| Parameter | Type  | Default | Required | Description          |
+| --------- | ----- | ------- | -------- | -------------------- |
+| Height    | int64 | false   | true     | height of blockchain |
 
 **Return Parameters**
 
@@ -2046,6 +2116,7 @@ type ResultCommit struct {
 ```
 
 **Example**
+
 ```shell
 curl 'localhost:27147/commit?height=10'
 ```
@@ -2247,6 +2318,7 @@ The above command returns JSON structured like this:
 ```
 
 #### 6.1.14 Query Tx
+
 Tx allows you to query the transaction results. `nil` could mean the
 transaction is in the mempool, invalidated, or was not sent in the first
 place.
@@ -2254,7 +2326,7 @@ place.
 **Query Parameters**
 
 | Parameter | Type   | Default | Required | Description                                               |
-|-----------|--------|---------|----------|-----------------------------------------------------------|
+| --------- | ------ | ------- | -------- | --------------------------------------------------------- |
 | hash      | []byte | nil     | true     | The transaction hash                                      |
 | prove     | bool   | false   | false    | Include a proof of the transaction inclusion in the block |
 
@@ -2297,28 +2369,30 @@ The above command returns JSON structured like this:
 
 ```json
 {
-   "jsonrpc": "2.0",
-   "id": "",
-   "result": {
-      "hash": "AB1B84C7C0B0B195941DCE9CFE1A54214B72D5DB54AD388D8B146A6B62911E8E",
-      "height": "7560096",
-      "index": 0,
-      "tx_result": {
-         "data": "eyJvcmRlcl9pZCI6IjgxM0U0OTM5RjE1NjdCMjE5NzA0RkZDMkFENERGNThCREUwMTA4NzktNDMifQ==",
-         "log": "Msg 0: ",
-         "tags": [
-            {
-               "key": "YWN0aW9u",
-               "value": "b3JkZXJOZXc="
-            }
-         ]
-      },
-      "tx": "2wHwYl3uCmPObcBDChSBPkk58VZ7IZcE/8KtTfWL3gEIeRIrODEzRTQ5MzlGMTU2N0IyMTk3MDRGRkMyQUQ0REY1OEJERTAxMDg3OS00MxoNWkVCUkEtMTZEX0JOQiACKAEwwIQ9OJBOQAEScAom61rphyECE5vdld5ywirCorD4eFOxzKLorfnFikponHXTJjATRBoSQFmMOnTcCNgtl2aO01I6EFoq+3UsW+NNCftfMVjVXbL1RaJGYmPPgPAtEYTdUO/E2KY2omKQmmMuvt3qpCbAkrIY0uUYICo="
-   }
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "hash": "AB1B84C7C0B0B195941DCE9CFE1A54214B72D5DB54AD388D8B146A6B62911E8E",
+    "height": "7560096",
+    "index": 0,
+    "tx_result": {
+      "data": "eyJvcmRlcl9pZCI6IjgxM0U0OTM5RjE1NjdCMjE5NzA0RkZDMkFENERGNThCREUwMTA4NzktNDMifQ==",
+      "log": "Msg 0: ",
+      "tags": [
+        {
+          "key": "YWN0aW9u",
+          "value": "b3JkZXJOZXc="
+        }
+      ]
+    },
+    "tx": "2wHwYl3uCmPObcBDChSBPkk58VZ7IZcE/8KtTfWL3gEIeRIrODEzRTQ5MzlGMTU2N0IyMTk3MDRGRkMyQUQ0REY1OEJERTAxMDg3OS00MxoNWkVCUkEtMTZEX0JOQiACKAEwwIQ9OJBOQAEScAom61rphyECE5vdld5ywirCorD4eFOxzKLorfnFikponHXTJjATRBoSQFmMOnTcCNgtl2aO01I6EFoq+3UsW+NNCftfMVjVXbL1RaJGYmPPgPAtEYTdUO/E2KY2omKQmmMuvt3qpCbAkrIY0uUYICo="
+  }
 }
 ```
+
 Please note that this transaction information is amino-encoded. You will see the original transaction information after decoding:
 `Data` field is:
+
 ```json
 {
   "orderData": {
@@ -2332,15 +2406,49 @@ Please note that this transaction information is amino-encoded. You will see the
   }
 }
 ```
+
 Tx filed is:
+
 ```json
-{"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-53","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==","account_number":" <account-number>","sequence":""}],"memo":"","source":"0","data":null}}
+{
+  "type": "auth/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "dex/NewOrder",
+        "value": {
+          "sender": "tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5",
+          "id": "813E4939F1567B219704FFC2AD4DF58BDE010879-53",
+          "symbol": "ZEBRA-16D_BNB",
+          "ordertype": 2,
+          "side": 1,
+          "price": "1000000",
+          "quantity": "10000",
+          "timeinforce": 1
+        }
+      }
+    ],
+    "signatures": [
+      {
+        "pub_key": {
+          "type": "tendermint/PubKeySecp256k1",
+          "value": "AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"
+        },
+        "signature": "6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==",
+        "account_number": " <account-number>",
+        "sequence": ""
+      }
+    ],
+    "memo": "",
+    "source": "0",
+    "data": null
+  }
+}
 ```
 
-
-
 #### 6.1.15 Query TxSearch
-TxSearch allows you to query for multiple transactions results.You could search transaction by its index.  It returns a
+
+TxSearch allows you to query for multiple transactions results.You could search transaction by its index. It returns a
 list of transactions (maximum ?per_page entries) and the total count.
 
 **Enable Indexer**
@@ -2350,7 +2458,7 @@ You need to enable indexer in `config.tml`. You can modify the `index_tags` to i
 **Query Parameters**
 
 | Parameter | Type   | Default | Required | Description                                               |
-|-----------|--------|---------|----------|-----------------------------------------------------------|
+| --------- | ------ | ------- | -------- | --------------------------------------------------------- |
 | query     | string | ""      | true     | Query                                                     |
 | prove     | bool   | false   | false    | Include proofs of the transactions inclusion in the block |
 | page      | int    | 1       | false    | Page number (1-based)                                     |
@@ -2468,14 +2576,16 @@ The above command returns JSON structured like this:
 ```
 
 ### 6.2 Tx APIs
+
 #### 6.2.1 BroadcastTxAsync
+
 This method just return transaction hash right away and there is no return from CheckTx or DeliverTx.
 
 **Transaction Parameters**
 
-| Parameter | Type | Default | Required | Description     |
-|-----------|------|---------|----------|-----------------|
-| tx        | Tx   | nil     | true     | The transaction info|
+| Parameter | Type | Default | Required | Description          |
+| --------- | ---- | ------- | -------- | -------------------- |
+| tx        | Tx   | nil     | true     | The transaction info |
 
 **Return Parameters**
 
@@ -2489,29 +2599,74 @@ type ResultBroadcastTx struct {
 	Hash cmn.HexBytes
 }
 ```
+
 **Example of Calling REST**
 
 1. Query the account number and sequence of your address
+
 ```
 tbnbcli account your-address  --chain-id=Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80
 ```
+
 2. Generate your transaction json and save this output to a json file
+
 ```
 tbnbcli send --from name --to=to-address --amount=500000000:BNB --chain-id=Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80 --json --memo "Test transfer" --generate-only
 ```
+
 The returned value is the transaction to be sent without signature：
+
 ```
  {"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-53","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"","account_number":" account-number","sequence":"10"}],"memo":"","source":"0","data":null}}
 ```
-3. Generate amino-encoded  transaction with `dry-run`
+
+3. Generate amino-encoded transaction with `dry-run`
+
 ```shell
 tbnbcli dex order  --symbol ABC-16D_BNB  --side 1 --price 1000000 --qty 10000 --from account --chain-id Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80 -t gte --dry --account-number account-number
 ```
+
 This transaction is generatedas as a signed transaction in amino encoding:
+
 ```json
- {"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-53","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==","account_number":" <account-number>","sequence":"10"}],"memo":"","source":"0","data":null}}
+{
+  "type": "auth/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "dex/NewOrder",
+        "value": {
+          "sender": "tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5",
+          "id": "813E4939F1567B219704FFC2AD4DF58BDE010879-53",
+          "symbol": "ZEBRA-16D_BNB",
+          "ordertype": 2,
+          "side": 1,
+          "price": "1000000",
+          "quantity": "10000",
+          "timeinforce": 1
+        }
+      }
+    ],
+    "signatures": [
+      {
+        "pub_key": {
+          "type": "tendermint/PubKeySecp256k1",
+          "value": "AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"
+        },
+        "signature": "6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==",
+        "account_number": " <account-number>",
+        "sequence": "10"
+      }
+    ],
+    "memo": "",
+    "source": "0",
+    "data": null
+  }
+}
 ```
+
 4. Submit this transaction to rpc port
+
 ```shell
 curl 'localhost:27147/broadcast_tx_async?tx="0xdb01f0625dee0a63ce6dc0430a14813e4939f1567b219704ffc2ad4df58bde010879122b383133453439333946313536374232313937303446464332414434444635384244453031303837392d34341a0d5a454252412d3136445f424e422002280130c0843d38904e400112700a26eb5ae9872102139bdd95de72c22ac2a2b0f87853b1cca2e8adf9c58a4a689c75d3263013441a124015e99f7a686529c76ccc2d70b404af82ca88dfee27c363439b91ea0280571b2731c03b902193d6a5793baf64b54bcdf3f85e0d7cf657e1a1077f88143a5a65f518d2e518202b"'
 ```
@@ -2533,29 +2688,74 @@ The above command returns JSON structured like this:
 
 ```json
 {
-	"error": "",
-	"result": {
-		"hash": "721B67C1772EA5FC7E80D70DEAA3C52034204FC60C057FF1117EE45468C1A980",
-		"log": "",
-		"data": "",
-		"code": "0"
-	},
-	"id": "",
-	"jsonrpc": "2.0"
-
+  "error": "",
+  "result": {
+    "hash": "721B67C1772EA5FC7E80D70DEAA3C52034204FC60C057FF1117EE45468C1A980",
+    "log": "",
+    "data": "",
+    "code": "0"
+  },
+  "id": "",
+  "jsonrpc": "2.0"
 }
 ```
+
 Please note that the returned data contains no confirmation about whether this transaction has been committed or not. You will be able to verify the transaction status on blockchain with the following query:
+
 ```
 tbnbcli tx 721B67C1772EA5FC7E80D70DEAA3C52034204FC60C057FF1117EE45468C1A980  --chain-id=Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80
 ```
+
 It returns the height which it was committed:
+
 ```json
-{"hash":"721B67C1772EA5FC7E80D70DEAA3C52034204FC60C057FF1117EE45468C1A980","height":"7731087","tx":{"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-44","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"FemfemhlKcdszC1wtASvgsqI3+4nw2NDm5HqAoBXGycxwDuQIZPWpXk7r2S1S83z+F4NfPZX4aEHf4gUOlpl9Q==","account_number":"406226","sequence":"43"}],"memo":"","source":"0","data":null}},"result":{"data":"eyJvcmRlcl9pZCI6IjgxM0U0OTM5RjE1NjdCMjE5NzA0RkZDMkFENERGNThCREUwMTA4NzktNDQifQ==","log":"Msg 0: ","tags":[{"key":"YWN0aW9u","value":"b3JkZXJOZXc="}]}}
+{
+  "hash": "721B67C1772EA5FC7E80D70DEAA3C52034204FC60C057FF1117EE45468C1A980",
+  "height": "7731087",
+  "tx": {
+    "type": "auth/StdTx",
+    "value": {
+      "msg": [
+        {
+          "type": "dex/NewOrder",
+          "value": {
+            "sender": "tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5",
+            "id": "813E4939F1567B219704FFC2AD4DF58BDE010879-44",
+            "symbol": "ZEBRA-16D_BNB",
+            "ordertype": 2,
+            "side": 1,
+            "price": "1000000",
+            "quantity": "10000",
+            "timeinforce": 1
+          }
+        }
+      ],
+      "signatures": [
+        {
+          "pub_key": {
+            "type": "tendermint/PubKeySecp256k1",
+            "value": "AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"
+          },
+          "signature": "FemfemhlKcdszC1wtASvgsqI3+4nw2NDm5HqAoBXGycxwDuQIZPWpXk7r2S1S83z+F4NfPZX4aEHf4gUOlpl9Q==",
+          "account_number": "406226",
+          "sequence": "43"
+        }
+      ],
+      "memo": "",
+      "source": "0",
+      "data": null
+    }
+  },
+  "result": {
+    "data": "eyJvcmRlcl9pZCI6IjgxM0U0OTM5RjE1NjdCMjE5NzA0RkZDMkFENERGNThCREUwMTA4NzktNDQifQ==",
+    "log": "Msg 0: ",
+    "tags": [{ "key": "YWN0aW9u", "value": "b3JkZXJOZXc=" }]
+  }
+}
 ```
 
-
 #### 6.2.2 BroadcastTxCommit
+
 The transaction will be broadcasted and returns with the response from CheckTx and DeliverTx.
 
 This method will wait for both CheckTx and DeliverTx, so it is the slowest way to broadcast through RPC but offers the most accurate success/failure response.
@@ -2568,9 +2768,9 @@ will contain a non-OK ABCI code.
 
 **Transaction Parameters**
 
-| Parameter | Type | Default | Required | Description     |
-|-----------|------|---------|----------|-----------------|
-| tx        | Tx   | nil     | true     | The transaction info|
+| Parameter | Type | Default | Required | Description          |
+| --------- | ---- | ------- | -------- | -------------------- |
+| tx        | Tx   | nil     | true     | The transaction info |
 
 **Return Parameters**
 
@@ -2584,29 +2784,107 @@ type ResultBroadcastTxCommit struct {
 	Height    int64
 }
 ```
+
 **Example of Calling REST**
 
 1. Query the account number and sequence of your address
+
 ```
 tbnbcli account your-address  --chain-id=Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80
 ```
+
 2. Generate your transaction json and save this output to a json file
+
 ```
 tbnbcli send --from name --to=to-address --amount=500000000:BNB --chain-id=Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80 --json --memo "Test transfer" --generate-only
 ```
+
 The returned value is the transaction to be sent without signature：
+
 ```json
- {"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-53","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"","account_number":" account-number","sequence":"10"}],"memo":"","source":"0","data":null}}
+{
+  "type": "auth/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "dex/NewOrder",
+        "value": {
+          "sender": "tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5",
+          "id": "813E4939F1567B219704FFC2AD4DF58BDE010879-53",
+          "symbol": "ZEBRA-16D_BNB",
+          "ordertype": 2,
+          "side": 1,
+          "price": "1000000",
+          "quantity": "10000",
+          "timeinforce": 1
+        }
+      }
+    ],
+    "signatures": [
+      {
+        "pub_key": {
+          "type": "tendermint/PubKeySecp256k1",
+          "value": "AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"
+        },
+        "signature": "",
+        "account_number": " account-number",
+        "sequence": "10"
+      }
+    ],
+    "memo": "",
+    "source": "0",
+    "data": null
+  }
+}
 ```
-3. Generate amino-encoded  transaction with `dry-run`
+
+3. Generate amino-encoded transaction with `dry-run`
+
 ```shell
 tbnbcli dex order  --symbol ABC-16D_BNB  --side 1 --price 1000000 --qty 10000 --from account --chain-id Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80 -t gte --dry --account-number account-number
 ```
+
 This transaction is generatedas as a signed transaction in amino encoding:
+
 ```json
- {"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-53","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==","account_number":" <account-number>","sequence":"10"}],"memo":"","source":"0","data":null}}
+{
+  "type": "auth/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "dex/NewOrder",
+        "value": {
+          "sender": "tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5",
+          "id": "813E4939F1567B219704FFC2AD4DF58BDE010879-53",
+          "symbol": "ZEBRA-16D_BNB",
+          "ordertype": 2,
+          "side": 1,
+          "price": "1000000",
+          "quantity": "10000",
+          "timeinforce": 1
+        }
+      }
+    ],
+    "signatures": [
+      {
+        "pub_key": {
+          "type": "tendermint/PubKeySecp256k1",
+          "value": "AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"
+        },
+        "signature": "6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==",
+        "account_number": " <account-number>",
+        "sequence": "10"
+      }
+    ],
+    "memo": "",
+    "source": "0",
+    "data": null
+  }
+}
 ```
+
 4. Submit this transaction
+
 ```shell
 curl 'localhost:27147/broadcast_tx_commit?tx="0xdb01f0625dee0a63ce6dc0430a14813e4939f1567b219704ffc2ad4df58bde010879122b383133453439333946313536374232313937303446464332414434444635384244453031303837392d34341a0d5a454252412d3136445f424e422002280130c0843d38904e400112700a26eb5ae9872102139bdd95de72c22ac2a2b0f87853b1cca2e8adf9c58a4a689c75d3263013441a124015e99f7a686529c76ccc2d70b404af82ca88dfee27c363439b91ea0280571b2731c03b902193d6a5793baf64b54bcdf3f85e0d7cf657e1a1077f88143a5a65f518d2e518202b"'
 ```
@@ -2656,17 +2934,18 @@ The above command returns JSON structured like this. Please note that the return
   }
 }
 ```
+
 To understand the output data, you could decode these data information of base64 encoding: "{"order_id":"813E4939F1567B219704FFC2AD4DF58BDE010879-46"}"
 
-
 #### 6.2.3 BroadcastTxSync
+
 The transaction will be broadcasted and returns with the response from CheckTx.
 
 **Transaction Parameters**
 
-| Parameter | Type | Default | Required | Description     |
-|-----------|------|---------|----------|-----------------|
-| tx        | Tx   | nil     | true     | The transaction info|
+| Parameter | Type | Default | Required | Description          |
+| --------- | ---- | ------- | -------- | -------------------- |
+| tx        | Tx   | nil     | true     | The transaction info |
 
 **Return Parameters**
 
@@ -2680,28 +2959,74 @@ type ResultBroadcastTx struct {
 	Hash cmn.HexBytes
 }
 ```
+
 **Example of Calling REST**
+
 1. Query the account number and sequence of your address
+
 ```
 bnbcli account your-address  --chain-id=Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80
 ```
+
 2. Generate your transaction json and save this output to a json file
+
 ```
 bnbcli send --from name --to=to-address --amount=500000000:BNB --chain-id=Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80 --json --memo "Test transfer" --generate-only
 ```
+
 The returned value is the transaction to be sent without signature：
+
 ```
  {"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-53","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"","account_number":" account-number","sequence":"10"}],"memo":"","source":"0","data":null}}
 ```
-3. Generate amino-encoded  transaction with `dry-run`
+
+3. Generate amino-encoded transaction with `dry-run`
+
 ```shell
 bnbcli dex order  --symbol ABC-16D_BNB  --side 1 --price 1000000 --qty 10000 --from account --chain-id Binance-Chain-Nile --node=data-seed-pre-2-s1.binance.org:80 -t gte --dry --account-number account-number
 ```
+
 This transaction is generatedas as a signed transaction in amino encoding:
+
 ```json
- {"type":"auth/StdTx","value":{"msg":[{"type":"dex/NewOrder","value":{"sender":"tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5","id":"813E4939F1567B219704FFC2AD4DF58BDE010879-53","symbol":"ZEBRA-16D_BNB","ordertype":2,"side":1,"price":"1000000","quantity":"10000","timeinforce":1}}],"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"},"signature":"6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==","account_number":" <account-number>","sequence":"10"}],"memo":"","source":"0","data":null}}
+{
+  "type": "auth/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "dex/NewOrder",
+        "value": {
+          "sender": "tbnb1sylyjw032eajr9cyllp26n04300qzzre38qyv5",
+          "id": "813E4939F1567B219704FFC2AD4DF58BDE010879-53",
+          "symbol": "ZEBRA-16D_BNB",
+          "ordertype": 2,
+          "side": 1,
+          "price": "1000000",
+          "quantity": "10000",
+          "timeinforce": 1
+        }
+      }
+    ],
+    "signatures": [
+      {
+        "pub_key": {
+          "type": "tendermint/PubKeySecp256k1",
+          "value": "AhOb3ZXecsIqwqKw+HhTscyi6K35xYpKaJx10yYwE0Qa"
+        },
+        "signature": "6qppgKBUp5Fwc77qc1I/U1qX4H4VSBP/fHUWaEPoQDk/visNDIGCts96271+TaflByaRV/toQTulIHOjbT9oJQ==",
+        "account_number": " <account-number>",
+        "sequence": "10"
+      }
+    ],
+    "memo": "",
+    "source": "0",
+    "data": null
+  }
+}
 ```
+
 4. Submit this transaction
+
 ```shell
 curl 'localhost:27147/broadcast_tx_sync?tx="0xdb01f0625dee0a63ce6dc0430a14813e4939f1567b219704ffc2ad4df58bde010879122b383133453439333946313536374232313937303446464332414434444635384244453031303837392d34381a0d5a454252412d3136445f424e422002280130c0843d38904e400112700a26eb5ae9872102139bdd95de72c22ac2a2b0f87853b1cca2e8adf9c58a4a689c75d3263013441a12406032dd568bac76ef8231fdf928f663ab6893124465528cc8ac5232afdceceea41640227501847c95dc5307f9bbcd01c82b33093c0eb11af8aef9c70eeb554f9318d2e518202f"'
 ```
@@ -2735,7 +3060,6 @@ The above command returns JSON structured like this:
 ```
 
 To understand the output data, you could decode these data information of hex.: "{"order_id":"813E4939F1567B219704FFC2AD4DF58BDE010879-48"}"
-
 
 ### 6.3 Websocket APIs
 
@@ -2820,13 +3144,10 @@ The above command returns JSON structured like this:
 
 ```json
 {
-
-
-	"error": "",
-	"result": {},
-	"id": "",
-	"jsonrpc": "2.0"
-
+  "error": "",
+  "result": {},
+  "id": "",
+  "jsonrpc": "2.0"
 }
 ```
 
@@ -2854,14 +3175,12 @@ The above command returns JSON structured like this:
 
 ```json
 {
-	"error": "",
-	"result": {},
-	"id": "",
-	"jsonrpc": "2.0"
+  "error": "",
+  "result": {},
+  "id": "",
+  "jsonrpc": "2.0"
 }
 ```
-
-
 
 #### 6.3.3 UnsubscribeAll
 
@@ -2884,11 +3203,9 @@ The above command returns JSON structured like this:
 
 ```json
 {
-	"error": "",
-	"result": {},
-	"id": "",
-	"jsonrpc": "2.0"
+  "error": "",
+  "result": {},
+  "id": "",
+  "jsonrpc": "2.0"
 }
 ```
-
-
