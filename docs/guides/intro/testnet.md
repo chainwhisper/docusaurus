@@ -24,7 +24,7 @@ There is also a [web wallet](https://testnet.binance.org/en/) that can directly 
 
 1. Navigate to the [testnet faucet](https://www.binance.com/en/dex/testnet/address) and log in to your Binance.com account.
 
-2. Create an address on testnet by following [this guide](doc2.md)
+2. Create an address on testnet by following [this guide](create-address.md)
 
 3. Enter your testnet address in the form
 

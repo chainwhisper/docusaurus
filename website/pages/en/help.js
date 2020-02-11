@@ -12,43 +12,58 @@ const CompLibrary = require('../../core/CompLibrary.js');
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
-function Help(props) {
-  const {config: siteConfig, language = ''} = props;
-  const {baseUrl, docsUrl} = siteConfig;
-  const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-  const langPart = `${language ? `${language}/` : ''}`;
-  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+const translate = require('../../server/translate.js').translate;
 
-  const supportLinks = [
-    {
-      content: `Learn more using the [documentation on this site.](${docUrl(
-        'doc1.html',
-      )})`,
-      title: 'Browse Docs',
-    },
-    {
-      content: 'Ask questions about the documentation and project [here](community.binance.org)',
-      title: 'Join the community',
-    },
-    {
-      content: "Find out what's new with this project [here](https://t.me/joinchat/IuVfSlYWC5seijz6a0Bjww)",
-      title: 'Join developer chat',
-    },
-  ];
+class Help extends React.Component {
+  render() {
+    const supportLinks = [
+      {
+        content: (
+          <translate>
+            Learn more using the [documentation on this
+            site.](/test-site/docs/en/doc1.html)
+          </translate>
+        ),
+        title: <translate>Browse Docs</translate>,
+      },
+      {
+        content: (
+          <translate>
+            Ask questions about the documentation and project
+          </translate>
+        ),
+        title: <translate>Join the community</translate>,
+      },
+      {
+        content: <translate>Find out what's new with this project</translate>,
+        title: <translate>Stay up to date</translate>,
+      },
+    ];
 
-  return (
-    <div className="docMainWrapper wrapper">
-      <Container className="mainContainer documentContainer postContainer">
-        <div className="post">
-          <header className="postHeader">
-            <h1>Need help?</h1>
-          </header>
-          <p>Binance Chain is an open community.</p>
-          <GridBlock contents={supportLinks} layout="threeColumn" />
-        </div>
-      </Container>
-    </div>
-  );
+    return (
+      <div className="docMainWrapper wrapper">
+        <Container className="mainContainer documentContainer postContainer">
+          <div className="post">
+            <header className="postHeader">
+              <h2>
+                <translate>Need help?</translate>
+              </h2>
+            </header>
+            <p>
+              <translate desc="statement made to reader">
+                This project is maintained by a dedicated group of people.
+              </translate>
+            </p>
+            <GridBlock contents={supportLinks} layout="threeColumn" />
+          </div>
+        </Container>
+      </div>
+    );
+  }
 }
+
+Help.defaultProps = {
+  language: 'en',
+};
 
 module.exports = Help;

@@ -8,6 +8,8 @@
 const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
+const translate = require('../../server/translate.js').translate;
+
 
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
@@ -63,7 +65,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
-            <Button href={docUrl('intro.html')}>Overview</Button>
+            <Button href={docUrl('intro/intro.html')}>Overview</Button>
             <Button href="https://github.com/binance-chain/node-binary">Download</Button>
             <Button href={docUrl('create-wallet.html')}>Binance DEX Tutorial</Button>
           </PromoSection>
@@ -155,15 +157,16 @@ class Index extends React.Component {
             'Secure your funds',
             image: `${baseUrl}img/guides.png`,
             imageAlign: 'top',
-            title: 'Guides',
+            title: ' <translate>Guides</translate>',
           },
           {
             content: ' <a href="/docusaurus/docs/api/rpc"> <u>REST API</u></a> </br>' +
-                      'G0 SDK </br>'+
-                      'JS SDK',
+                      'Go SDK </br>'+
+                      'JS SDK</br>'+
+                      'Python SDK',
             image: `${baseUrl}img/sdk.jpeg`,
             imageAlign: 'top',
-            title: ' Reference & SDKs',
+            title: '  <translate>Reference & SDKs</translate>',
           },
         ]}
       </Block>
@@ -208,5 +211,9 @@ class Index extends React.Component {
     );
   }
 }
+
+Index.defaultProps = {
+  language: 'en',
+};
 
 module.exports = Index;

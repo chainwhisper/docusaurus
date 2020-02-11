@@ -60,12 +60,19 @@ const siteConfig = {
   headerIcon: "img/logo.svg",
   footerIcon: "",
   favicon: "img/favicon.ico",
-
+  algolia: {
+    apiKey: 'e79ca350e781c3ce1916a5cf5931c623',
+    indexName: 'binance-chain',
+    algoliaOptions: {
+      facetFilters: ['language:LANGUAGE', 'version:VERSION'],
+    },
+  },
   /* Colors for website */
   colors: {
     primaryColor: "#212833",
     secondaryColor: "#F0B90B"
   },
+  translationRecruitingLink: 'https://crowdin.com/project/binance-chain',
 
   /* Custom fonts for website */
   /*
@@ -86,7 +93,7 @@ const siteConfig = {
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: "default"
+    theme: "atom-one-darkhight"
   },
 
   // Add custom scripts here that would be placed in <script> tags.

@@ -44,7 +44,7 @@ console.log("address: ", address);
 
 <!--Go-->
 
-```Go
+```golang
 //-----   Init KeyManager  -------------
 km, _ := NewKeyManager()
 //-----   Init sdk  -------------
@@ -124,7 +124,7 @@ httpClient
 
 <!--Go-->
 
-```Go
+```golang
 //-----   Init KeyManager  -------------
 keyManager1, _ := NewKeyManager()
 //-----   Init sdk  -------------

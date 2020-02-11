@@ -33,7 +33,7 @@ console.log("address: ", address);
 
 <!--Go-->
 
-```Go
+```golang
 //-----   Init KeyManager  -------------
 km, _ := NewKeyManager()
 //-----   Init sdk  -------------
