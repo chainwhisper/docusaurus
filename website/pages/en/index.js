@@ -188,12 +188,14 @@ class Index extends React.Component {
       const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page;
 
       return (
-        <div className="productShowcaseSection paddingBottom">
-          <form className="mailSignup" action="" target="_blank" rel="noopener noreferrer" noValidate="">
-          <span className="mailSignup__title">Get developer updates:</span>
-          <input type="email" value="" name="EMAIL" className="mailSignup__input" placeholder="email address" required=""/>
-          <input type="submit" value="Sign up" name="subscribe" className="s-button mailSignup__submit spu-textUppercase"/>
-          </form>
+
+         <div style={{position: 'absolute',left: '500px'}} >
+          <form action="https://github.us4.list-manage.com/subscribe/post?u=a854b84e9b881f47819f938ef&amp;id=cd6fe7a07b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <span  id="mc_embed_signup" className="mailSignup__title">Get developer updates:  </span>
+          <input type="email" value="" name="EMAIL" className="mailSignup__input" placeholder="email address" required="true" style={{width:'200px'}}/>
+          <input type="submit" value="Sign Up" name="subscribe" className="m-button mailSignup__submit"/>
+          <div style={{position: 'absolute',left: '-5000px'}}aria-hidden="true"><input type="text" name="b_a854b84e9b881f47819f938ef_cd6fe7a07b" tabindex="-1" value=""/></div>
+         </form>
         </div>
       );
     };
